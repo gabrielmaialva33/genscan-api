@@ -27,7 +27,7 @@ importers:
         version: 2.2.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))
       '@adonisjs/drive':
         specifier: ^3.4.1
-        version: 3.4.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@aws-sdk/client-s3@3.840.0)(@aws-sdk/s3-request-presigner@3.840.0)(@google-cloud/storage@7.16.0)
+        version: 3.4.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@aws-sdk/client-s3@3.842.0)(@aws-sdk/s3-request-presigner@3.842.0)(@google-cloud/storage@7.16.0)
       '@adonisjs/i18n':
         specifier: ^2.2.1
         version: 2.2.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@vinejs/vine@3.0.1)(edge.js@6.2.1)
@@ -50,11 +50,11 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0(87cd39607ce6982f80644bf646b7db1b)
       '@aws-sdk/client-s3':
-        specifier: ^3.840.0
-        version: 3.840.0
+        specifier: ^3.842.0
+        version: 3.842.0
       '@aws-sdk/s3-request-presigner':
-        specifier: ^3.840.0
-        version: 3.840.0
+        specifier: ^3.842.0
+        version: 3.842.0
       '@google-cloud/storage':
         specifier: ^7.16.0
         version: 7.16.0
@@ -67,6 +67,9 @@ importers:
       argon2:
         specifier: ^0.43.0
         version: 0.43.0
+      axios:
+        specifier: ^1.10.0
+        version: 1.10.0
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
@@ -636,10 +639,10 @@ packages:
         integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==,
       }
 
-  '@aws-sdk/client-s3@3.840.0':
+  '@aws-sdk/client-s3@3.842.0':
     resolution:
       {
-        integrity: sha512-dRuo03EqGBbl9+PTogpwY9bYmGWIjn8nB82HN5Qj20otgjUvhLOdEkkip9mroYsrvqNoKbMedWdCudIcB/YY1w==,
+        integrity: sha512-T5Rh72Rcq1xIaM8KkTr1Wpr7/WPCYO++KrM+/Em0rq2jxpjMMhj77ITpgH7eEmNxWmwIndTwqpgfmbpNfk7Gbw==,
       }
     engines: { node: '>=18.0.0' }
 
@@ -790,10 +793,10 @@ packages:
       }
     engines: { node: '>=18.0.0' }
 
-  '@aws-sdk/s3-request-presigner@3.840.0':
+  '@aws-sdk/s3-request-presigner@3.842.0':
     resolution:
       {
-        integrity: sha512-1jcrhVoSZjiAQJGNswI0RGR36/+OG6yTV42wQamHdNHk+/68dn9MGTUVr+58AEFOyEAPE/EvkiYRD6n5WkUjMg==,
+        integrity: sha512-daS69IJ20X+BzsiEtj3XuyyM765iFOdZ648lrptHncQHRWdpzahk67/nP/SKYhWvnNrQ4pw2vYlVxpOs9vl1yg==,
       }
     engines: { node: '>=18.0.0' }
 
@@ -1366,39 +1369,35 @@ packages:
     peerDependencies:
       typescript: ^5.0.0
 
-  '@poppinss/cliui@6.4.3':
+  '@poppinss/cliui@6.4.4':
     resolution:
       {
-        integrity: sha512-flAHvbWHP4r7+DVcWMuO9EGnnkaZLJzkei6E4QTVhPsIAKBI78vDplhHXZofUvwG5IrU42QM0gX/pxMOKwQRvg==,
-      }
-    engines: { node: '>=18.16.0' }
-
-  '@poppinss/colors@4.1.4':
-    resolution:
-      {
-        integrity: sha512-FA+nTU8p6OcSH4tLDY5JilGYr1bVWHpNmcLr7xmMEdbWmKHa+3QZ+DqefrXKmdjO/brHTnQZo20lLSjaO7ydog==,
-      }
-    engines: { node: '>=18.16.0' }
-
-  '@poppinss/dumper@0.6.3':
-    resolution:
-      {
-        integrity: sha512-iombbn8ckOixMtuV1p3f8jN6vqhXefNjJttoPaJDMeIk/yIGhkkL3OrHkEjE9SRsgoAx1vBUU2GtgggjvA5hCA==,
+        integrity: sha512-yJfm+3yglxdeH85C+YebxZ1zsTB4pBh+QwCuxJcxV/pVbxagn63uYyxqnQif2sKWi+nkNZxuyemON3WrtGMBCQ==,
       }
 
-  '@poppinss/exception@1.2.1':
+  '@poppinss/colors@4.1.5':
     resolution:
       {
-        integrity: sha512-aQypoot0HPSJa6gDPEPTntc1GT6QINrSbgRlRhadGW2WaYqUK3tK4Bw9SBMZXhmxd3GeAlZjVcODHgiu+THY7A==,
+        integrity: sha512-FvdDqtcRCtz6hThExcFOgW0cWX+xwSMWcRuQe5ZEb2m7cVQOAVZOIMt+/v9RxGiD9/OY16qJBXK4CVKWAPalBw==,
       }
-    engines: { node: '>=18' }
 
-  '@poppinss/hooks@7.2.5':
+  '@poppinss/dumper@0.6.4':
     resolution:
       {
-        integrity: sha512-mxORKQ5CFzQNi6yK3zwCGWfGS507w23IhV3kFq42QzWlv/vpvf4aMJDbtfMCR5p52ghVoe0d1wmgp77ak2ORhQ==,
+        integrity: sha512-iG0TIdqv8xJ3Lt9O8DrPRxw1MRLjNpoqiSGU03P/wNLP/s0ra0udPJ1J2Tx5M0J3H/cVyEgpbn8xUKRY9j59kQ==,
       }
-    engines: { node: '>=18.16.0' }
+
+  '@poppinss/exception@1.2.2':
+    resolution:
+      {
+        integrity: sha512-m7bpKCD4QMlFCjA/nKTs23fuvoVFoA83brRKmObCUNmi/9tVu8Ve3w4YQAnJu4q3Tjf5fr685HYIC/IA2zHRSg==,
+      }
+
+  '@poppinss/hooks@7.2.6':
+    resolution:
+      {
+        integrity: sha512-+bZhb1CrIvhgnypjE0W/NZVkRnRDZL37HDDI6zvIo8h3PVs1lKj5Dyl54V/EpU6SFSZAS5dilgZ0V7zhjyJMgA==,
+      }
 
   '@poppinss/inspect@1.0.1':
     resolution:
@@ -1412,12 +1411,11 @@ packages:
         integrity: sha512-JnpQ64lAYl5Q8C3asUklDVponYJCQTjOAouzH/OaP2vvisykLUxVqL8Lo+9Vr+Hb9RPPfZ/cwANEvHTL1rcEiw==,
       }
 
-  '@poppinss/macroable@1.0.4':
+  '@poppinss/macroable@1.0.5':
     resolution:
       {
-        integrity: sha512-ct43jurbe7lsUX5eIrj4ijO3j/6zIPp7CDnFWXDs7UPAbw1Pu1iH3oAmFdP4jcskKJBURH5M9oTtyeiUXyHX8Q==,
+        integrity: sha512-6u61y1HHd090MEk1Av0/1btDmm2Hh/+XoJj+HgFYRh9koUPI822ybJbwLHuqjLNCiY+o1gRykg2igEqOf/VBZw==,
       }
-    engines: { node: '>=18.16.0' }
 
   '@poppinss/matchit@3.1.2':
     resolution:
@@ -1425,12 +1423,11 @@ packages:
         integrity: sha512-Bx+jY+vmdQFmwYiHliiPjr+oVBaGnh79B1h1FSAm3jME1QylLFt8PPYC0ymO8Q5PzJj/KuE3jeTnZhRHOWqq8g==,
       }
 
-  '@poppinss/middleware@3.2.5':
+  '@poppinss/middleware@3.2.6':
     resolution:
       {
-        integrity: sha512-+P9yY4KYYZFTbOoIvVK/R4PfPcPyxt4E23Dx4l7V8Z/8+DOzAL01eWZs9mMgHOYTbAokKVLQ+JIsyDmrTA0Uyg==,
+        integrity: sha512-KcZeLlJ0EV+PLTlGGq3+5IqwpGOUTuR3ucfwyPOXeQegQKtyIF9i2HryKklY1qhfLhhTwFC9M6v1nTfdHQM6tA==,
       }
-    engines: { node: '>=18.16.0' }
 
   '@poppinss/multiparty@2.0.1':
     resolution:
@@ -1438,10 +1435,10 @@ packages:
         integrity: sha512-Pf3V9PFyZDIkDBBiAOT2hdmA+1l/+hverHbUnMzNzwtwgO50s2ZPt5KxUydVA0hceg9gryo5unQ0WUF1SO9tkQ==,
       }
 
-  '@poppinss/oauth-client@7.0.0':
+  '@poppinss/oauth-client@7.0.1':
     resolution:
       {
-        integrity: sha512-oBWcbLDJxh+WSlSfM093u3Usw6qCa8HKAd1kFqNKY2LdK+4l5iqv6w2iTaSsiQFbACNgIS3VNIB1yQcmI1FI6w==,
+        integrity: sha512-TQVDyNqiheSNjooD0Rx3cSbBlUWxZxWgCyC278iaVTnmlunS94qEk6Grw+thm5L1Y2+O+dfsZRtkR117hbEe1g==,
       }
     engines: { node: '>=18.16.0' }
 
@@ -1452,17 +1449,16 @@ packages:
       }
     engines: { node: '>=20.6.0' }
 
-  '@poppinss/prompts@3.1.4':
+  '@poppinss/prompts@3.1.5':
     resolution:
       {
-        integrity: sha512-3xbwolmX8/G2jZZTRcymc1KysJ6b7vyonauKwyQtt3WOaUTHMFcxTJ/Sdp75ehHFJI1BOVzd4v6BS9pmqTcHlw==,
+        integrity: sha512-q94apkzTzp8iV30VxmaRUU6RmRTnJRBXpgV3PtIAZUYoPglJEeYwNLWPnKUrhXmvrH0vjl3TqMINO0A4GUZn3Q==,
       }
-    engines: { node: '>=18.16.0' }
 
-  '@poppinss/string@1.6.0':
+  '@poppinss/string@1.7.0':
     resolution:
       {
-        integrity: sha512-HfAf9VqTvo31BsruwgwEauQ316RNODdryk6QgYZo4qTV50s0h1H9HmIr+QjwwI3u4Sz7r4Q1dd1EVaLB7pWlaw==,
+        integrity: sha512-IuCtWaUwmJeAdby0n1a5cTYsBLe7fPymdc4oNTTl1b6l+Ok+14XpSX0ILOEU6UtZ9D2XI3f4TVUh4Titkk1xgw==,
       }
 
   '@poppinss/types@1.1.0':
@@ -1484,10 +1480,10 @@ packages:
         integrity: sha512-Z+3kolI/gdjTQRJWRiZTEk6r6QOeGLesfmdc8ISSeHlyUg0mTnVdi08/rwOcRJD6dLdwBGTDUf7lK2K7GpT4ww==,
       }
 
-  '@poppinss/validator-lite@2.1.0':
+  '@poppinss/validator-lite@2.1.1':
     resolution:
       {
-        integrity: sha512-CfT8EPeB7jKxjCb5+KP32iu/0BB7cKlRRqMBcCwzky0WgFACsFlRtvHsy+CkOszHmNyOdoH3WoyMyoxVCu9qEw==,
+        integrity: sha512-wD64/vpViB0qV40iR/nXYJJb0pOyXW4dvXGs2mR7lNiIUTZr1ceWlhxHu9XU8kQhTjaIDQphgMa9pPBa3scxPg==,
       }
 
   '@rlanz/bull-queue@3.1.0':
@@ -2613,6 +2609,12 @@ packages:
       }
     engines: { node: '>= 0.4' }
 
+  axios@1.10.0:
+    resolution:
+      {
+        integrity: sha512-/1xYAC4MP/HEG+3duIhFr4ZQXR4sQXOIe+o6sdqzeykGLx6Upp/1p8MHqhINOvGeP7xyNHe7tsiJByc4SSVUxw==,
+      }
+
   balanced-match@1.0.2:
     resolution:
       {
@@ -2714,10 +2716,10 @@ packages:
       }
     engines: { node: '>=18.20' }
 
-  bullmq@5.56.0:
+  bullmq@5.56.1:
     resolution:
       {
-        integrity: sha512-j5ct2tdc9M8PKcjhJw+euO24BsO1wXBAkNGXYI1R1qvh7FvRldZ5wtLixLWqQ4/crafj0Vrwi+y1kXFXMwBJFA==,
+        integrity: sha512-HmX53sf24bbDj5NVrDLDEjy8OSDmbGMESfvFhVK8NpHsA4WlAdKxPDf7c5b9RZf5wZGHyAd2XhWSkE9dmNPYww==,
       }
 
   bytes@3.1.2:
@@ -3363,10 +3365,10 @@ packages:
         integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==,
       }
 
-  electron-to-chromium@1.5.178:
+  electron-to-chromium@1.5.179:
     resolution:
       {
-        integrity: sha512-wObbz/ar3Bc6e4X5vf0iO8xTN8YAjN/tgiAOJLr7yjYFtP9wAjq8Mb5h0yn6kResir+VYx2DXBj9NNobs0ETSA==,
+        integrity: sha512-UWKi/EbBopgfFsc5k61wFpV7WrnnSlSzW/e2XcBmS6qKYTivZlLtoll5/rdqRTxGglGHkmkW0j0pFNJG10EUIQ==,
       }
 
   emittery@1.2.0:
@@ -3824,6 +3826,18 @@ packages:
       '@aws-sdk/s3-request-presigner':
         optional: true
       '@google-cloud/storage':
+        optional: true
+
+  follow-redirects@1.15.9:
+    resolution:
+      {
+        integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==,
+      }
+    engines: { node: '>=4.0' }
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
         optional: true
 
   for-each@0.3.5:
@@ -5813,6 +5827,12 @@ packages:
       }
     engines: { node: '>= 0.10' }
 
+  proxy-from-env@1.1.0:
+    resolution:
+      {
+        integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==,
+      }
+
   pump@3.0.3:
     resolution:
       {
@@ -6987,12 +7007,11 @@ packages:
       }
     engines: { node: '>=18' }
 
-  youch-core@0.3.2:
+  youch-core@0.3.3:
     resolution:
       {
-        integrity: sha512-fusrlIMLeRvTFYLUjJ9KzlGC3N+6MOPJ68HNj/yJv2nz7zq8t4HEviLms2gkdRPUS7F5rZ5n+pYx9r88m6IE1g==,
+        integrity: sha512-ho7XuGjLaJ2hWHoK8yFnsUGy2Y5uDpqSTq1FkHLK4/oqKtyUU1AFbOOxY4IpC9f0fTLjwYbslUz0Po5BpD1wrA==,
       }
-    engines: { node: '>=18' }
 
   youch-terminal@2.2.3:
     resolution:
@@ -7006,12 +7025,11 @@ packages:
         integrity: sha512-UeVBXie8cA35DS6+nBkls68xaBBXCye0CNznrhszZjTbRVnJKQuNsyLKBTTL4ln1o1rh2PKtv35twV7irj5SEg==,
       }
 
-  youch@4.1.0-beta.9:
+  youch@4.1.0-beta.10:
     resolution:
       {
-        integrity: sha512-i7gHozzZ6PXBCSzt9FToxVamebbCkCoNPmPbDTWJwefEz5qNpAA0B+6WGW5mFCvXWox/jyQEyRJNQB0ZScVDZg==,
+        integrity: sha512-rLfVLB4FgQneDr0dv1oddCVZmKjcJ6yX6mS4pU82Mq/Dt9a3cLZQ62pDBL4AUO+uVrCvtWz3ZFUL2HFAFJ/BXQ==,
       }
-    engines: { node: '>=18' }
 
   z-schema@5.0.5:
     resolution:
@@ -7026,10 +7044,10 @@ snapshots:
 
   '@adonisjs/ace@13.3.0':
     dependencies:
-      '@poppinss/cliui': 6.4.3
-      '@poppinss/hooks': 7.2.5
-      '@poppinss/macroable': 1.0.4
-      '@poppinss/prompts': 3.1.4
+      '@poppinss/cliui': 6.4.4
+      '@poppinss/hooks': 7.2.6
+      '@poppinss/macroable': 1.0.5
+      '@poppinss/prompts': 3.1.5
       '@poppinss/utils': 6.10.0
       fastest-levenshtein: 1.0.16
       jsonschema: 1.5.0
@@ -7041,15 +7059,15 @@ snapshots:
   '@adonisjs/ally@5.1.0(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))':
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
-      '@poppinss/oauth-client': 7.0.0
+      '@poppinss/oauth-client': 7.0.1
       '@poppinss/utils': 6.10.0
 
   '@adonisjs/application@8.4.1(@adonisjs/config@5.0.3)(@adonisjs/fold@10.2.0)':
     dependencies:
       '@adonisjs/config': 5.0.3
       '@adonisjs/fold': 10.2.0
-      '@poppinss/hooks': 7.2.5
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/hooks': 7.2.6
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
       glob-parent: 6.0.2
       tempura: 0.4.1
@@ -7059,8 +7077,8 @@ snapshots:
       '@adonisjs/env': 6.2.0
       '@antfu/install-pkg': 0.4.1
       '@poppinss/chokidar-ts': 4.1.9(typescript@5.8.3)
-      '@poppinss/cliui': 6.4.3
-      '@poppinss/hooks': 7.2.5
+      '@poppinss/cliui': 6.4.4
+      '@poppinss/hooks': 7.2.6
       '@poppinss/utils': 6.10.0
       cpy: 11.1.0
       dedent: 1.6.0
@@ -7094,7 +7112,7 @@ snapshots:
     dependencies:
       '@adonisjs/http-server': 7.7.0(@adonisjs/application@8.4.1(@adonisjs/config@5.0.3)(@adonisjs/fold@10.2.0))(@adonisjs/encryption@6.0.2)(@adonisjs/events@9.0.2(@adonisjs/application@8.4.1(@adonisjs/config@5.0.3)(@adonisjs/fold@10.2.0))(@adonisjs/fold@10.2.0))(@adonisjs/fold@10.2.0)(@adonisjs/logger@6.0.6)
       '@paralleldrive/cuid2': 2.2.2
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@poppinss/multiparty': 2.0.1
       '@poppinss/utils': 6.10.0
       '@types/qs': 6.14.0
@@ -7143,9 +7161,9 @@ snapshots:
       '@adonisjs/repl': 4.1.0
       '@antfu/install-pkg': 1.1.0
       '@paralleldrive/cuid2': 2.2.2
-      '@poppinss/colors': 4.1.4
-      '@poppinss/dumper': 0.6.3
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/colors': 4.1.5
+      '@poppinss/dumper': 0.6.4
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
       '@sindresorhus/is': 7.0.2
       '@types/he': 1.2.3
@@ -7169,13 +7187,13 @@ snapshots:
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
 
-  '@adonisjs/drive@3.4.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@aws-sdk/client-s3@3.840.0)(@aws-sdk/s3-request-presigner@3.840.0)(@google-cloud/storage@7.16.0)':
+  '@adonisjs/drive@3.4.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@aws-sdk/client-s3@3.842.0)(@aws-sdk/s3-request-presigner@3.842.0)(@google-cloud/storage@7.16.0)':
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
-      flydrive: 1.3.0(@aws-sdk/client-s3@3.840.0)(@aws-sdk/s3-request-presigner@3.840.0)(@google-cloud/storage@7.16.0)
+      flydrive: 1.3.0(@aws-sdk/client-s3@3.842.0)(@aws-sdk/s3-request-presigner@3.842.0)(@google-cloud/storage@7.16.0)
     optionalDependencies:
-      '@aws-sdk/client-s3': 3.840.0
-      '@aws-sdk/s3-request-presigner': 3.840.0
+      '@aws-sdk/client-s3': 3.842.0
+      '@aws-sdk/s3-request-presigner': 3.842.0
       '@google-cloud/storage': 7.16.0
 
   '@adonisjs/encryption@6.0.2':
@@ -7185,7 +7203,7 @@ snapshots:
   '@adonisjs/env@6.2.0':
     dependencies:
       '@poppinss/utils': 6.10.0
-      '@poppinss/validator-lite': 2.1.0
+      '@poppinss/validator-lite': 2.1.1
       dotenv: 16.6.1
       split-lines: 3.0.0
 
@@ -7246,9 +7264,9 @@ snapshots:
       '@adonisjs/fold': 10.2.0
       '@adonisjs/logger': 6.0.6
       '@paralleldrive/cuid2': 2.2.2
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@poppinss/matchit': 3.1.2
-      '@poppinss/middleware': 3.2.5
+      '@poppinss/middleware': 3.2.6
       '@poppinss/utils': 6.10.0
       '@sindresorhus/is': 7.0.2
       accepts: 1.3.8
@@ -7299,8 +7317,8 @@ snapshots:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
       '@adonisjs/presets': 2.6.4(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))
       '@faker-js/faker': 9.9.0
-      '@poppinss/hooks': 7.2.5
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/hooks': 7.2.6
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
       fast-deep-equal: 3.1.3
       igniculus: 1.5.0
@@ -7328,8 +7346,8 @@ snapshots:
   '@adonisjs/mail@9.2.2(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@types/luxon@3.6.2)(@types/node@24.0.10)(dayjs@1.11.13)(edge.js@6.2.1)(luxon@3.6.1)':
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
-      '@poppinss/colors': 4.1.4
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/colors': 4.1.5
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
       '@types/nodemailer': 6.4.17
       edge.js: 6.2.1
@@ -7371,13 +7389,13 @@ snapshots:
 
   '@adonisjs/repl@4.1.0':
     dependencies:
-      '@poppinss/colors': 4.1.4
+      '@poppinss/colors': 4.1.5
       string-width: 7.2.0
 
   '@adonisjs/session@7.5.1(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))(@adonisjs/redis@9.2.0(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)))(@japa/api-client@3.1.0(@japa/assert@4.0.1(@japa/runner@4.2.0))(@japa/openapi-assertions@0.1.1(@japa/assert@4.0.1(@japa/runner@4.2.0))(@japa/runner@4.2.0)(openapi-types@1.3.4))(@japa/runner@4.2.0))(edge.js@6.2.1)':
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
     optionalDependencies:
       '@adonisjs/redis': 9.2.0(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))
@@ -7478,7 +7496,7 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.840.0':
+  '@aws-sdk/client-s3@3.842.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
@@ -7835,7 +7853,7 @@ snapshots:
       '@smithy/util-middleware': 4.0.4
       tslib: 2.8.1
 
-  '@aws-sdk/s3-request-presigner@3.840.0':
+  '@aws-sdk/s3-request-presigner@3.842.0':
     dependencies:
       '@aws-sdk/signature-v4-multi-region': 3.840.0
       '@aws-sdk/types': 3.840.0
@@ -8087,8 +8105,8 @@ snapshots:
   '@japa/api-client@3.1.0(@japa/assert@4.0.1(@japa/runner@4.2.0))(@japa/openapi-assertions@0.1.1(@japa/assert@4.0.1(@japa/runner@4.2.0))(@japa/runner@4.2.0)(openapi-types@1.3.4))(@japa/runner@4.2.0)':
     dependencies:
       '@japa/runner': 4.2.0
-      '@poppinss/hooks': 7.2.5
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/hooks': 7.2.6
+      '@poppinss/macroable': 1.0.5
       '@types/superagent': 8.1.9
       cookie: 1.0.2
       set-cookie-parser: 2.7.1
@@ -8102,16 +8120,16 @@ snapshots:
   '@japa/assert@4.0.1(@japa/runner@4.2.0)':
     dependencies:
       '@japa/runner': 4.2.0
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@types/chai': 5.2.2
       assertion-error: 2.0.1
       chai: 5.2.0
 
   '@japa/core@10.3.0':
     dependencies:
-      '@poppinss/hooks': 7.2.5
-      '@poppinss/macroable': 1.0.4
-      '@poppinss/string': 1.6.0
+      '@poppinss/hooks': 7.2.6
+      '@poppinss/macroable': 1.0.5
+      '@poppinss/string': 1.7.0
       async-retry: 1.3.3
       emittery: 1.2.0
       string-width: 7.2.0
@@ -8119,10 +8137,10 @@ snapshots:
 
   '@japa/errors-printer@4.1.2':
     dependencies:
-      '@poppinss/colors': 4.1.4
+      '@poppinss/colors': 4.1.5
       jest-diff: 29.7.0
       supports-color: 10.0.0
-      youch: 4.1.0-beta.9
+      youch: 4.1.0-beta.10
 
   '@japa/openapi-assertions@0.1.1(@japa/assert@4.0.1(@japa/runner@4.2.0))(@japa/runner@4.2.0)(openapi-types@1.3.4)':
     dependencies:
@@ -8144,8 +8162,8 @@ snapshots:
     dependencies:
       '@japa/core': 10.3.0
       '@japa/errors-printer': 4.1.2
-      '@poppinss/colors': 4.1.4
-      '@poppinss/hooks': 7.2.5
+      '@poppinss/colors': 4.1.5
+      '@poppinss/hooks': 7.2.6
       fast-glob: 3.3.3
       find-cache-dir: 5.0.0
       getopts: 2.3.0
@@ -8232,9 +8250,9 @@ snapshots:
       slash: 5.1.0
       typescript: 5.8.3
 
-  '@poppinss/cliui@6.4.3':
+  '@poppinss/cliui@6.4.4':
     dependencies:
-      '@poppinss/colors': 4.1.4
+      '@poppinss/colors': 4.1.5
       cli-boxes: 4.0.1
       cli-table3: 0.6.5
       cli-truncate: 4.0.0
@@ -8245,19 +8263,19 @@ snapshots:
       terminal-size: 4.0.0
       wordwrap: 1.0.0
 
-  '@poppinss/colors@4.1.4':
+  '@poppinss/colors@4.1.5':
     dependencies:
       kleur: 4.1.5
 
-  '@poppinss/dumper@0.6.3':
+  '@poppinss/dumper@0.6.4':
     dependencies:
-      '@poppinss/colors': 4.1.4
+      '@poppinss/colors': 4.1.5
       '@sindresorhus/is': 7.0.2
       supports-color: 10.0.0
 
-  '@poppinss/exception@1.2.1': {}
+  '@poppinss/exception@1.2.2': {}
 
-  '@poppinss/hooks@7.2.5': {}
+  '@poppinss/hooks@7.2.6': {}
 
   '@poppinss/inspect@1.0.1': {}
 
@@ -8265,13 +8283,13 @@ snapshots:
     dependencies:
       moize: 6.1.6
 
-  '@poppinss/macroable@1.0.4': {}
+  '@poppinss/macroable@1.0.5': {}
 
   '@poppinss/matchit@3.1.2':
     dependencies:
       '@arr/every': 1.0.1
 
-  '@poppinss/middleware@3.2.5': {}
+  '@poppinss/middleware@3.2.6': {}
 
   '@poppinss/multiparty@2.0.1':
     dependencies:
@@ -8279,21 +8297,21 @@ snapshots:
       safe-buffer: 5.2.1
       uid-safe: 2.1.5
 
-  '@poppinss/oauth-client@7.0.0':
+  '@poppinss/oauth-client@7.0.1':
     dependencies:
-      '@poppinss/exception': 1.2.1
+      '@poppinss/exception': 1.2.2
       ky: 1.8.1
 
   '@poppinss/object-builder@1.1.0': {}
 
-  '@poppinss/prompts@3.1.4':
+  '@poppinss/prompts@3.1.5':
     dependencies:
-      '@poppinss/colors': 4.1.4
-      '@poppinss/exception': 1.2.1
+      '@poppinss/colors': 4.1.5
+      '@poppinss/exception': 1.2.2
       '@poppinss/object-builder': 1.1.0
       enquirer: 2.4.1
 
-  '@poppinss/string@1.6.0':
+  '@poppinss/string@1.7.0':
     dependencies:
       '@lukeed/ms': 2.0.2
       '@types/bytes': 3.1.5
@@ -8308,31 +8326,31 @@ snapshots:
 
   '@poppinss/utils@6.10.0':
     dependencies:
-      '@poppinss/exception': 1.2.1
+      '@poppinss/exception': 1.2.2
       '@poppinss/object-builder': 1.1.0
-      '@poppinss/string': 1.6.0
+      '@poppinss/string': 1.7.0
       flattie: 1.1.1
       safe-stable-stringify: 2.5.0
       secure-json-parse: 4.0.0
 
   '@poppinss/utils@7.0.0-next.3':
     dependencies:
-      '@poppinss/exception': 1.2.1
+      '@poppinss/exception': 1.2.2
       '@poppinss/object-builder': 1.1.0
-      '@poppinss/string': 1.6.0
+      '@poppinss/string': 1.7.0
       '@poppinss/types': 1.1.0
       flattie: 1.1.1
       safe-stable-stringify: 2.5.0
       secure-json-parse: 4.0.0
 
-  '@poppinss/validator-lite@2.1.0': {}
+  '@poppinss/validator-lite@2.1.1': {}
 
   '@rlanz/bull-queue@3.1.0(@adonisjs/core@6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1))':
     dependencies:
       '@adonisjs/core': 6.19.0(@adonisjs/assembler@7.8.2(typescript@5.8.3))(@vinejs/vine@3.0.1)(argon2@0.43.0)(bcrypt@6.0.0)(edge.js@6.2.1)
       '@poppinss/utils': 6.10.0
       '@sindresorhus/is': 6.3.1
-      bullmq: 5.56.0
+      bullmq: 5.56.1
     transitivePeerDependencies:
       - supports-color
 
@@ -8964,7 +8982,7 @@ snapshots:
 
   '@vinejs/vine@3.0.1':
     dependencies:
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@types/validator': 13.15.2
       '@vinejs/compiler': 3.0.0
       camelcase: 8.0.0
@@ -9113,6 +9131,14 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
+  axios@1.10.0:
+    dependencies:
+      follow-redirects: 1.15.9
+      form-data: 4.0.3
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+
   balanced-match@1.0.2: {}
 
   base64-js@1.5.1: {}
@@ -9130,7 +9156,7 @@ snapshots:
     dependencies:
       '@boringnode/bus': 0.7.1(ioredis@5.6.1)
       '@julr/utils': 1.9.0
-      '@poppinss/exception': 1.2.1
+      '@poppinss/exception': 1.2.2
       async-mutex: 0.5.0
       lru-cache: 11.1.0
       p-timeout: 6.1.4
@@ -9158,7 +9184,7 @@ snapshots:
   browserslist@4.25.1:
     dependencies:
       caniuse-lite: 1.0.30001726
-      electron-to-chromium: 1.5.178
+      electron-to-chromium: 1.5.179
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.1)
 
@@ -9166,7 +9192,7 @@ snapshots:
 
   builtin-modules@5.0.0: {}
 
-  bullmq@5.56.0:
+  bullmq@5.56.1:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.6.1
@@ -9501,7 +9527,7 @@ snapshots:
   edge.js@6.2.1:
     dependencies:
       '@poppinss/inspect': 1.0.1
-      '@poppinss/macroable': 1.0.4
+      '@poppinss/macroable': 1.0.5
       '@poppinss/utils': 6.10.0
       classnames: 2.5.1
       edge-error: 4.0.2
@@ -9519,7 +9545,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.178: {}
+  electron-to-chromium@1.5.179: {}
 
   emittery@1.2.0: {}
 
@@ -9843,16 +9869,18 @@ snapshots:
 
   flattie@1.1.1: {}
 
-  flydrive@1.3.0(@aws-sdk/client-s3@3.840.0)(@aws-sdk/s3-request-presigner@3.840.0)(@google-cloud/storage@7.16.0):
+  flydrive@1.3.0(@aws-sdk/client-s3@3.842.0)(@aws-sdk/s3-request-presigner@3.842.0)(@google-cloud/storage@7.16.0):
     dependencies:
       '@humanwhocodes/retry': 0.4.3
       '@poppinss/utils': 6.10.0
       etag: 1.8.1
       mime-types: 3.0.1
     optionalDependencies:
-      '@aws-sdk/client-s3': 3.840.0
-      '@aws-sdk/s3-request-presigner': 3.840.0
+      '@aws-sdk/client-s3': 3.842.0
+      '@aws-sdk/s3-request-presigner': 3.842.0
       '@google-cloud/storage': 7.16.0
+
+  follow-redirects@1.15.9: {}
 
   for-each@0.3.5:
     dependencies:
@@ -10946,6 +10974,8 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
+  proxy-from-env@1.1.0: {}
+
   pump@3.0.3:
     dependencies:
       end-of-stream: 1.4.5
@@ -11644,9 +11674,9 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  youch-core@0.3.2:
+  youch-core@0.3.3:
     dependencies:
-      '@poppinss/exception': 1.2.1
+      '@poppinss/exception': 1.2.2
       error-stack-parser-es: 1.0.5
 
   youch-terminal@2.2.3:
@@ -11661,13 +11691,13 @@ snapshots:
       mustache: 4.2.0
       stacktracey: 2.1.8
 
-  youch@4.1.0-beta.9:
+  youch@4.1.0-beta.10:
     dependencies:
-      '@poppinss/colors': 4.1.4
-      '@poppinss/dumper': 0.6.3
+      '@poppinss/colors': 4.1.5
+      '@poppinss/dumper': 0.6.4
       '@speed-highlight/core': 1.2.7
       cookie: 1.0.2
-      youch-core: 0.3.2
+      youch-core: 0.3.3
 
   z-schema@5.0.5:
     dependencies:
