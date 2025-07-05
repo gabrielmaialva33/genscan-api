@@ -26,6 +26,13 @@ export default await Env.create(new URL('../', import.meta.url), {
 
   /*
   |----------------------------------------------------------
+  | Variables for configuring the data API
+  |----------------------------------------------------------
+  */
+  DATA_API_CPF_TOKEN: Env.schema.string.optional(),
+  DATA_API_PARENT_TOKEN: Env.schema.string.optional(),
+  /*
+  |----------------------------------------------------------
   | Variables for configuring session package
   |----------------------------------------------------------
   */
