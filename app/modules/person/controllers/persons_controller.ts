@@ -12,8 +12,10 @@ export default class PersonsController {
     private listPersonsService: ListPersonsService
   ) {}
 
-  async index({}: HttpContext) {
-    return this.listPersonsService.run()
+  async index({ request }: HttpContext) {
+    const gender = request.input('gender')
+    const persons = await this.listPersonsService.run(gender)
+    return persons
   }
 
   async store({ request, response }: HttpContext) {
