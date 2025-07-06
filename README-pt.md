@@ -1,15 +1,15 @@
 <h1 align="center">
-  <img src=".github/assets/images/img1.png" height="200" alt="acl">
+  <img src=".github/assets/images/img1.png" height="200" alt="genscan-api">
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/gabrielmaialva33/base-acl-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
-  <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub top language" >
-  <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub language count" >
-  <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="Repository size" >
+  <img src="https://img.shields.io/github/license/gabrielmaialva33/genscan-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
+  <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub top language" >
+  <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub language count" >
+  <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="Repository size" >
   <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/b0347a5f-cacf-486d-bd2d-b91d3e6cb570.svg?style=flat&logo=appveyor" alt="Wakatime" >
-  <a href="https://github.com/gabrielmaialva33/base-rbac-api/commits/master">
-    <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/base-acl-api?style=flat&logo=appveyor" alt="GitHub last commit" >
+  <a href="https://github.com/gabrielmaialva33/genscan-api/commits/master">
+    <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub last commit" >
     <img src="https://img.shields.io/badge/feito%20por-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >
   </a>
 </p>
@@ -34,9 +34,7 @@
 
 ## :bookmark: Sobre
 
-**Base ACL** é uma API modular de controle de acesso construída com AdonisJS v6 que fornece uma base robusta para
-autenticação e controle de acesso baseado em papéis. A API segue princípios de arquitetura limpa com clara separação de
-responsabilidades e foi projetada para servir como base para múltiplos projetos.
+**genscan-api** é uma API modular para escaneamento e análise genealógica, construída com AdonisJS v6. Ela fornece uma base robusta para autenticação, controle de acesso baseado em papéis e gerenciamento de dados genealógicos. A API segue princípios de arquitetura limpa com uma clara separação de responsabilidades.
 
 ### 🏗️ Visão Geral da Arquitetura
 
@@ -348,7 +346,7 @@ Os seguintes softwares devem estar instalados:
 ### :arrow_down: **Clonando o repositório**
 
 ```sh
-  $ git clone https://github.com/gabrielmaialva33/base-acl-api.git
+  $ git clone https://github.com/gabrielmaialva33/genscan-api.git
 ```
 
 <br>
@@ -358,7 +356,7 @@ Os seguintes softwares devem estar instalados:
 - :package: API
 
 ```sh
-  $ cd base-acl-api
+  $ cd genscan-api
   # Instalação de dependências.
   $ yarn # ou npm install
   # Configuração ambiente de sistema
@@ -523,7 +521,7 @@ ROOT
 ### 📥 Coleção Insomnia
 
 Obtenha a coleção completa da API para o
-Insomnia: [Download](https://raw.githubusercontent.com/gabrielmaialva33/base-acl-api/master/.github/assets/insomnia/Insomnia.json.zip)
+Insomnia: [Download](https://raw.githubusercontent.com/gabrielmaialva33/genscan-api/master/.github/assets/insomnia/Insomnia.json.zip)
 
 ## :memo: Licença
 
