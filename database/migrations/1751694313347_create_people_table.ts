@@ -4,8 +4,9 @@ export default class extends BaseSchema {
   protected tableName = 'peoples'
 
   async up() {
+    this.schema.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.uuid('id').primary().defaultTo(this.raw('uuid_generate_v4()'))
       table.string('name').notNullable()
       table.string('cpf_hash').notNullable().unique()
       table.string('email').nullable()
