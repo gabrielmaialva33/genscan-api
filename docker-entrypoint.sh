@@ -62,5 +62,5 @@ fi
 
 # Start server
 echo "🎯 Starting server on port 3333..."
-echo "📍 Application will be available at http://localhost:3334"
-exec NODE_ENV=production node bin/server.js
+echo "📍 Application will be available at http://localhost:3333"
+exec node bin/server.js
