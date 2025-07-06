@@ -2,10 +2,10 @@ import { inject } from '@adonisjs/core'
 import PersonRepository from '#modules/person/repositories/person_repository'
 
 @inject()
-export default class PersonService {
+export default class ListPersonsService {
   constructor(private personRepository: PersonRepository) {}
 
-  async list() {
+  async run() {
     return this.personRepository.list()
   }
 }
