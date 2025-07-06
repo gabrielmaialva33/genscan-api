@@ -4,6 +4,7 @@ import User from '#modules/user/models/user'
 import { UserFactory } from '#database/factories/user_factory'
 
 export default class extends BaseSeeder {
+  static environment = ['development', 'testing']
   async run() {
     const users = await UserFactory.merge({
       password: '123456',
