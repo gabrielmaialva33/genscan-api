@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: base-acl-api
+    container_name: genscan-api
     restart: always
     healthcheck:
       test: ['CMD', 'nc', '-z', 'localhost', '3333']
@@ -26,12 +26,12 @@ services:
     environment:
       # App
       TZ: ${TZ}
-      PORT: ${PORT}
-      HOST: ${HOST}
+      PORT: ${PORT:-3333}
+      HOST: 0.0.0.0
       LOG_LEVEL: ${LOG_LEVEL}
       APP_KEY: ${APP_KEY}
       NODE_ENV: ${NODE_ENV}
-      APP_URL: 'http://${HOST}:${PORT}'
+      APP_URL: 'http://localhost:${PORT}'
 
       # Authentication
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
@@ -121,7 +121,7 @@ services:
 
   postgres:
     image: postgres:16
-    container_name: base-acl-postgres
+    container_name: genscan-postgres
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_DATABASE}']
       timeout: 45s
@@ -144,7 +144,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: base-acl-redis
+    container_name: genscan-redis
     restart: always
     ports:
       - '6379:6379'
@@ -158,7 +158,7 @@ services:
 
   postgrest:
     image: postgrest/postgrest:latest
-    container_name: base-acl-postgrest
+    container_name: genscan-postgrest
     restart: always
     ports:
       - '3000:3000'
