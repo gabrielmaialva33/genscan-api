@@ -67,12 +67,10 @@ export default class Person extends BaseModel {
 
   static bySearch = scope((query, search: string | null) => {
     if (search) {
-      query.where((subQuery) => {
-        subQuery.whereRaw(
-          `unaccent(name) ILIKE unaccent(?) OR unaccent(email) ILIKE unaccent(?) OR unaccent(cpf_hash) ILIKE unaccent(?)`,
-          [`%${search}%`, `%${search}%`, `%${search}%`]
-        )
-      })
+      query.whereRaw(
+        `unaccent(name) ILIKE unaccent(?) OR unaccent(email) ILIKE unaccent(?) OR unaccent(cpf_hash) ILIKE unaccent(?)`,
+        [`%${search}%`, `%${search}%`, `%${search}%`]
+      )
     }
   })
 
