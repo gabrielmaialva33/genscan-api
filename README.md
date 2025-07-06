@@ -210,101 +210,131 @@ graph TD
 
 ```mermaid
 erDiagram
-    USERS ||--o{ USER_ROLES : has
-    ROLES ||--o{ USER_ROLES : has
-    USERS ||--o{ USER_PERMISSIONS : has
-    USERS ||--o{ FILES : uploads
-    ROLES ||--o{ ROLE_PERMISSIONS : has
-    PERMISSIONS ||--o{ ROLE_PERMISSIONS : has
-    PERMISSIONS ||--o{ USER_PERMISSIONS : has
-    USERS ||--o{ AUDIT_LOGS : generates
+    USERS ||--o{ AUTH_ACCESS_TOKENS : "has"
+    USERS ||--o{ USER_ROLES : "has"
+    ROLES ||--o{ USER_ROLES : "has"
+    USERS ||--o{ USER_PERMISSIONS : "has"
+    PERMISSIONS ||--o{ USER_PERMISSIONS : "is part of"
+    ROLES ||--o{ ROLE_PERMISSIONS : "has"
+    PERMISSIONS ||--o{ ROLE_PERMISSIONS : "is part of"
+    USERS ||--o{ FILES : "uploads"
+    USERS ||--o{ AUDIT_LOGS : "generates"
+    PEOPLES ||--o{ RELATIONSHIPS : "initiates"
+    PEOPLES ||--o{ RELATIONSHIPS : "is target of"
+    PEOPLES ||--o{ CONTACTS : "has"
+    PEOPLES ||--o{ ADDRESSES : "has"
 
     USERS {
-        bigint id PK
-        string first_name
-        string last_name
+        int id PK
+        string full_name
         string email UK
         string username UK
         string password
-        string avatar_url
-        boolean is_online
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
+        boolean is_deleted
+        jsonb metadata
+    }
+
+    AUTH_ACCESS_TOKENS {
+        int id PK
+        int tokenable_id FK "USERS(id)"
+        string type
+        string hash
+        text abilities
+        timestamp expires_at
     }
 
     ROLES {
-        bigint id PK
+        int id PK
         string name
         string slug UK
-        string description
-        timestamp created_at
-        timestamp updated_at
+        text description
+    }
+
+    USER_ROLES {
+        int id PK
+        int user_id FK "USERS(id)"
+        int role_id FK "ROLES(id)"
     }
 
     PERMISSIONS {
-        bigint id PK
+        int id PK
         string name UK
         string resource
         string action
         string context
         string description
-        timestamp created_at
-        timestamp updated_at
-    }
-
-    USER_ROLES {
-        bigint id PK
-        bigint user_id FK
-        bigint role_id FK
-        timestamp created_at
-        timestamp updated_at
     }
 
     ROLE_PERMISSIONS {
-        bigint id PK
-        bigint role_id FK
-        bigint permission_id FK
-        timestamp created_at
-        timestamp updated_at
+        int id PK
+        int role_id FK "ROLES(id)"
+        int permission_id FK "PERMISSIONS(id)"
     }
 
     USER_PERMISSIONS {
-        bigint id PK
-        bigint user_id FK
-        bigint permission_id FK
+        int id PK
+        int user_id FK "USERS(id)"
+        int permission_id FK "PERMISSIONS(id)"
         boolean granted
         timestamp expires_at
-        timestamp created_at
-        timestamp updated_at
+    }
+
+    FILES {
+        int id PK
+        int owner_id FK "USERS(id)"
+        string client_name
+        string file_name
+        int file_size
+        string file_type
+        string file_category
+        string url
     }
 
     AUDIT_LOGS {
-        bigint id PK
-        bigint user_id FK
+        int id PK
+        int user_id FK "USERS(id)"
         string resource
         string action
-        string context
-        bigint resource_id
         string result
         string reason
         string ip_address
         string user_agent
         json metadata
-        timestamp created_at
     }
 
-    FILES {
-        bigint id PK
-        bigint owner_id FK
-        string client_name
-        string file_name
-        bigint file_size
-        string file_type
-        string file_category
-        string url
-        timestamp created_at
-        timestamp updated_at
+    PEOPLES {
+        uuid id PK
+        string name
+        string cpf_hash UK
+        string email
+        date birth_date
+        string gender
+        string marital_status
+        jsonb external_data
+    }
+
+    RELATIONSHIPS {
+        uuid id PK
+        uuid person_id FK "PEOPLES(id)"
+        uuid related_person_id FK "PEOPLES(id)"
+        string relationship_type
+    }
+
+    CONTACTS {
+        uuid id PK
+        uuid person_id FK "PEOPLES(id)"
+        string phone_number
+        string email
+    }
+
+    ADDRESSES {
+        uuid id PK
+        uuid person_id FK "PEOPLES(id)"
+        string street
+        string city
+        string state
+        string zip_code
+        string neighborhood
     }
 ```
 
