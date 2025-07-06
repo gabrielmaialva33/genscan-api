@@ -34,7 +34,7 @@
 
 ## :bookmark: Sobre
 
-**genscan-api** é uma API modular para escaneamento e análise genealógica, construída com AdonisJS v6. Ela fornece uma base robusta para autenticação, controle de acesso baseado em papéis e gerenciamento de dados genealógicos. A API segue princípios de arquitetura limpa com uma clara separação de responsabilidades.
+**genscan-api** é uma API modular para escaneamento e análise genealógica, construída com AdonisJS v6. Ela fornece uma base robusta para autenticação, controle de acesso baseado em papéis e gerenciamento de dados genealógicos, permitindo a construção e visualização de árvores genealógicas complexas. A API segue princípios de arquitetura limpa com uma clara separação de responsabilidades, garantindo escalabilidade e manutenibilidade.
 
 ### 🏗️ Visão Geral da Arquitetura
 
@@ -59,6 +59,7 @@ graph TB
         FILE[Módulo Arquivo<br/>Upload, Armazenamento]
         AUDIT[Módulo Auditoria<br/>Logs, Analytics]
         HEALTH[Módulo Saúde<br/>Status, Monitoramento]
+        PERSON[Módulo Pessoa<br/>Genealogia, Relacionamentos]
     end
 
     subgraph "Serviços Core"
@@ -86,6 +87,7 @@ graph TB
     MW --> FILE
     MW --> AUDIT
     MW --> HEALTH
+    MW --> PERSON
 
     AUTH --> JWT
     AUTH --> HASH
@@ -169,6 +171,9 @@ graph TD
         subgraph "Módulo Propriedade"
             OWNER_M[ownership/]
         end
+        subgraph "Módulo Pessoa"
+            PERSON_M[person/]
+        end
     end
 
     APP --> MODULES
@@ -179,6 +184,7 @@ graph TD
     MODULES --> AUDIT_M
     MODULES --> HEALTH_M
     MODULES --> OWNER_M
+    MODULES --> PERSON_M
 ```
 
 ## 🌟 Principais Funcionalidades
@@ -205,6 +211,13 @@ graph TD
 - **⚡ Permissões em Cache Redis**: Verificação de permissões de alta performance com cache inteligente
 - **🏢 Propriedade de Recursos**: Sistema de propriedade integrado com suporte a contextos de equipe e departamento
 - **🔍 Controle Granular de Permissões**: Sistema de permissões baseado em Recurso + Ação + Contexto
+
+### Funcionalidades Genealógicas
+
+- **👨‍👩‍👧‍👦 Gestão de Indivíduos**: Cadastro e gerenciamento de perfis pessoais detalhados, incluindo informações demográficas.
+- **🔗 Mapeamento de Relacionamentos**: Definição de laços familiares complexos (pais, filhos, cônjuges, etc.) para construir árvores genealógicas.
+- **📞 Armazenamento de Contatos e Endereços**: Centralização de informações de contato e múltiplos endereços por indivíduo.
+- **🧩 Estrutura de Dados Flexível**: Suporte para dados externos e informações adicionais através de campos JSON, permitindo fácil integração com outras fontes.
 
 ### Esquema do Banco de Dados
 

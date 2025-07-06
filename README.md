@@ -34,7 +34,7 @@
 
 ## :bookmark: About
 
-**genscan-api** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data. The API follows clean architecture principles with a clear separation of concerns.
+**genscan-api** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data, enabling the construction and visualization of complex family trees. The API follows clean architecture principles with a clear separation of concerns, ensuring scalability and maintainability.
 
 ### 🏗️ Architecture Overview
 
@@ -59,6 +59,7 @@ graph TB
         FILE[File Module<br/>Upload, Storage]
         AUDIT[Audit Module<br/>Logging, Analytics]
         HEALTH[Health Module<br/>Status, Monitoring]
+        PERSON[Person Module<br/>Genealogy, Relationships]
     end
 
     subgraph "Core Services"
@@ -86,6 +87,7 @@ graph TB
     MW --> FILE
     MW --> AUDIT
     MW --> HEALTH
+    MW --> PERSON
 
     AUTH --> JWT
     AUTH --> HASH
@@ -169,6 +171,9 @@ graph TD
         subgraph "Ownership Module"
             OWNER_M[ownership/]
         end
+        subgraph "Person Module"
+            PERSON_M[person/]
+        end
     end
 
     APP --> MODULES
@@ -179,6 +184,7 @@ graph TD
     MODULES --> AUDIT_M
     MODULES --> HEALTH_M
     MODULES --> OWNER_M
+    MODULES --> PERSON_M
 ```
 
 ## 🌟 Key Features
@@ -205,6 +211,13 @@ graph TD
 - **⚡ Redis-Cached Permissions**: High-performance permission checking with intelligent caching
 - **🏢 Resource Ownership**: Built-in ownership system supporting team and department contexts
 - **🔍 Granular Permission Control**: Resource + Action + Context based permission system
+
+### Genealogical Features
+
+- **👨‍👩‍👧‍👦 Individual Management**: Create and manage detailed personal profiles, including demographic information.
+- **🔗 Relationship Mapping**: Define complex family ties (parents, children, spouses, etc.) to build family trees.
+- **📞 Contact and Address Storage**: Centralize contact information and multiple addresses per individual.
+- **🧩 Flexible Data Structure**: Support for external data and additional information through JSON fields, allowing for easy integration with other sources.
 
 ### Database Schema
 
