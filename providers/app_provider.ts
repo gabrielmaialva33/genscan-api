@@ -6,18 +6,7 @@ export default class AppProvider {
   /**
    * Register bindings to the container
    */
-  register() {
-    this.app.container.singleton('repositories.person', async () => {
-      const PersonRepository = await import('#modules/person/repositories/person_repository')
-      return new PersonRepository.default()
-    })
-
-    this.app.container.singleton('services.person', async (resolver) => {
-      const PersonService = await import('#modules/person/services/person_service')
-      const personRepository = await resolver.make('repositories.person')
-      return new PersonService.default(personRepository)
-    })
-  }
+  register() {}
 
   /**
    * The container bindings have booted
