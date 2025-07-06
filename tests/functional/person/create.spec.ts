@@ -1,10 +1,11 @@
 import { test } from '@japa/runner'
 import { PersonFactory } from '#database/factories/person_factory'
+import Person from '#modules/person/models/person'
 import crypto from 'node:crypto'
 
 test.group('Persons create', (group) => {
   group.each.setup(async () => {
-    // await Person.query().delete()
+    await Person.query().delete()
   })
 
   test('should create a new person with valid data', async ({ client }) => {
@@ -44,5 +45,8 @@ test.group('Persons create', (group) => {
     const response = await client.post('/api/v1/persons').json(personData)
 
     response.assertStatus(422)
+    response.assertBodyContains({
+      errors: [{ message: 'The cpf field must have at least 11 characters' }],
+    })
   })
 })
