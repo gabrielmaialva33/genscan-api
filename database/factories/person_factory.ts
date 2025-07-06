@@ -13,7 +13,7 @@ export const PersonFactory = factory
 
     return {
       name: faker.person.fullName(),
-      cpf_hash: cpfHash,
+      cpf_hash: crypto.createHash('sha256').update(cpf).digest('hex'),
       email: faker.internet.email(),
       birth_date: DateTime.fromJSDate(faker.date.past({ years: 50, refDate: new Date() })),
       gender: faker.person.sex(),
