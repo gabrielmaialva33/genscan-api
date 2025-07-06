@@ -14,7 +14,7 @@ test.group('Persons create', (group) => {
       email: 'john.doe@example.com',
     }
 
-    const response = await client.post('/persons').json(personData)
+    const response = await client.post('/api/v1/persons').json(personData)
 
     response.assertStatus(201)
     response.assertBodyContains({ name: 'John Doe' })
@@ -30,7 +30,7 @@ test.group('Persons create', (group) => {
       cpf,
     }
 
-    const response = await client.post('/persons').json(personData)
+    const response = await client.post('/api/v1/persons').json(personData)
 
     response.assertStatus(422)
   })
@@ -41,7 +41,7 @@ test.group('Persons create', (group) => {
       cpf: '123',
     }
 
-    const response = await client.post('/persons').json(personData)
+    const response = await client.post('/api/v1/persons').json(personData)
 
     response.assertStatus(422)
   })
