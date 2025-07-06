@@ -1,45 +1,90 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import { PersonFactory } from '#database/factories/person_factory'
-import { DateTime } from 'luxon'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import Person from '#modules/person/models/person'
+import Relationship from '#modules/person/models/relationship'
+import crypto from 'node:crypto'
 
 export default class extends BaseSeeder {
   static environment = ['development', 'testing']
 
   async run() {
-    // Create a main person
-    const person = await PersonFactory.with('contacts', 2).with('addresses', 1).create()
+    const filePath = join(process.cwd(), 'database/seeders/data/genealogy.json')
+    const data = JSON.parse(await readFile(filePath, 'utf-8'))
 
-    // Create parents
-    const father = await PersonFactory.merge({
-      gender: 'Masculino',
-      birth_date: DateTime.fromJSDate(new Date()).minus({ years: 30 }),
-    }).create()
+    const personIdMap = new Map<string, string>()
+    const personMap = new Map<string, Person>()
 
-    const mother = await PersonFactory.merge({
-      gender: 'Feminino',
-      birth_date: DateTime.fromJSDate(new Date()).minus({ years: 28 }),
-    }).create()
+    for (const entry of data) {
+      const personId = crypto.randomUUID()
+      personIdMap.set(entry.id, personId)
+    }
 
-    // Create relationships
-    await person.related('relationships').create({
-      related_person_id: father.id,
-      relationship_type: 'PAI',
-    })
+    for (const entry of data) {
+      const cpf = entry.id
+      const cpfHash = crypto.createHash('sha256').update(cpf).digest('hex')
+      const personId = personIdMap.get(entry.id)!
 
-    await person.related('relationships').create({
-      related_person_id: mother.id,
-      relationship_type: 'MÃE',
-    })
+      const person = await Person.create({
+        id: personId,
+        name: entry.data['first name'],
+        cpf_hash: cpfHash,
+        gender: entry.data.gender,
+      })
+      personMap.set(entry.id, person)
+    }
 
-    // Create relationships from parents to person
-    await father.related('relationships').create({
-      related_person_id: person.id,
-      relationship_type: 'FILHO(A)',
-    })
+    for (const entry of data) {
+      const person = personMap.get(entry.id)
+      if (!person) continue
 
-    await mother.related('relationships').create({
-      related_person_id: person.id,
-      relationship_type: 'FILHO(A)',
-    })
+      if (entry.rels.father) {
+        const fatherId = personIdMap.get(entry.rels.father)
+        if (fatherId) {
+          await Relationship.create({
+            person_id: person.id,
+            related_person_id: fatherId,
+            relationship_type: 'father',
+          })
+        }
+      }
+
+      if (entry.rels.mother) {
+        const motherId = personIdMap.get(entry.rels.mother)
+        if (motherId) {
+          await Relationship.create({
+            person_id: person.id,
+            related_person_id: motherId,
+            relationship_type: 'mother',
+          })
+        }
+      }
+
+      if (entry.rels.spouses) {
+        for (const spouseId of entry.rels.spouses) {
+          const spouseUUID = personIdMap.get(spouseId)
+          if (spouseUUID) {
+            await Relationship.create({
+              person_id: person.id,
+              related_person_id: spouseUUID,
+              relationship_type: 'spouse',
+            })
+          }
+        }
+      }
+
+      if (entry.rels.children) {
+        for (const childId of entry.rels.children) {
+          const childUUID = personIdMap.get(childId)
+          if (childUUID) {
+            await Relationship.create({
+              person_id: person.id,
+              related_person_id: childUUID,
+              relationship_type: 'child',
+            })
+          }
+        }
+      }
+    }
   }
 }
