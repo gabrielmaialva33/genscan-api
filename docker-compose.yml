@@ -6,33 +6,59 @@ services:
       dockerfile: Dockerfile
     container_name: base-acl-api
     restart: always
+    healthcheck:
+      test: ['CMD', 'nc', '-z', 'localhost', '3333']
+      timeout: 10s
+      interval: 30s
+      retries: 3
+      start_period: 40s
     ports:
-      - '3334:3333'
+      - '3333:3333'
+    expose:
+      - '3333'
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
     env_file:
       - .env
     environment:
+      # App
       TZ: ${TZ}
       PORT: ${PORT}
       HOST: ${HOST}
       LOG_LEVEL: ${LOG_LEVEL}
       APP_KEY: ${APP_KEY}
       NODE_ENV: ${NODE_ENV}
+      APP_URL: 'http://${HOST}:${PORT}'
 
+      # Authentication
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
       REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
 
+      # Data API
+      DATA_API_CPF_TOKEN: ${DATA_API_CPF_TOKEN}
+      DATA_API_PARENT_TOKEN: ${DATA_API_PARENT_TOKEN}
+
+      # Database
       DB_HOST: postgres
       DB_PORT: ${DB_PORT}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_DATABASE: ${DB_DATABASE}
 
+      # Redis
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
+
+      # Queue
+      QUEUE_REDIS_HOST: redis
+      QUEUE_REDIS_PORT: 6379
+      QUEUE_REDIS_PASSWORD: ${REDIS_PASSWORD:-redis}
+
+      LIMITER_STORE: redis
 
       # Web Clients
       DISCORD_CLIENT_ID: ${DISCORD_CLIENT_ID}
