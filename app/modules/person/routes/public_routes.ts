@@ -7,5 +7,5 @@ router
     router.get('/', [PersonsController, 'index']).as('index')
     router.post('/', [PersonsController, 'store']).as('store')
   })
-  .prefix('/persons')
+  .prefix('/api/v1/persons')
   .as('public.persons')
