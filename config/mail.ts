@@ -11,7 +11,7 @@ const mailConfig = defineConfig({
    */
   from: {
     address: env.get('SMTP_FROM_ADDRESS', 'noreply@example.com'),
-    name: env.get('SMTP_FROM_NAME', 'ACL API'),
+    name: env.get('SMTP_FROM_NAME', 'Genscan API'),
   },
 
   /**
