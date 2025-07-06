@@ -7,13 +7,13 @@ export default class Relationship extends BaseModel {
   static table = 'relationships'
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
-  declare person_id: number
+  declare person_id: string
 
   @column({ columnName: 'related_person_id' })
-  declare related_person_id: number
+  declare related_person_id: string
 
   @column()
   declare relationship_type: string

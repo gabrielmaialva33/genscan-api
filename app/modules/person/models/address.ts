@@ -7,10 +7,10 @@ export default class Address extends BaseModel {
   static table = 'addresses'
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
-  declare person_id: number
+  declare person_id: string
 
   @column()
   declare neighborhood: string | null

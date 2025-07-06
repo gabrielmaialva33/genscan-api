@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, computed, hasMany, scope } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Relationship from '#modules/person/models/relationship'
 import Contact from '#modules/person/models/contact'
@@ -9,12 +9,17 @@ export default class Person extends BaseModel {
   static table = 'peoples'
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare name: string
 
-  @column()
+  @computed()
+  get fullName() {
+    return this.name
+  }
+
+  @column({ serializeAs: null })
   declare cpf_hash: string
 
   @column()
@@ -52,4 +57,8 @@ export default class Person extends BaseModel {
     foreignKey: 'person_id',
   })
   declare addresses: HasMany<typeof Address>
+
+  static byGender = scope((query, gender: string) => {
+    query.where('gender', gender)
+  })
 }

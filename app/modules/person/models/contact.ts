@@ -7,10 +7,10 @@ export default class Contact extends BaseModel {
   static table = 'contacts'
 
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
-  declare person_id: number
+  declare person_id: string
 
   @column()
   declare phone_number: string | null
