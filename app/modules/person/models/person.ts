@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, computed, hasMany, scope } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
+
 import Relationship from '#modules/person/models/relationship'
 import Contact from '#modules/person/models/contact'
 import Address from '#modules/person/models/address'
@@ -15,7 +16,7 @@ export default class Person extends BaseModel {
   declare name: string
 
   @computed()
-  get fullName() {
+  get full_name() {
     return this.name
   }
 
@@ -58,7 +59,32 @@ export default class Person extends BaseModel {
   })
   declare addresses: HasMany<typeof Address>
 
-  static byGender = scope((query, gender: string) => {
-    query.where('gender', gender)
+  static byGender = scope((query, gender: string | null) => {
+    if (gender) {
+      query.where('gender', gender)
+    }
+  })
+
+  static bySearch = scope((query, search: string | null) => {
+    if (search) {
+      query.where((subQuery) => {
+        subQuery.whereRaw(
+          `unaccent(name) ILIKE unaccent(?) OR unaccent(email) ILIKE unaccent(?) OR unaccent(cpf_hash) ILIKE unaccent(?)`,
+          [`%${search}%`, `%${search}%`, `%${search}%`]
+        )
+      })
+    }
+  })
+
+  static byMaritalStatus = scope((query, maritalStatus: string | null) => {
+    if (maritalStatus)
+      query.whereRaw(`unaccent(marital_status) ILIKE unaccent(?)`, [`%${maritalStatus}%`])
+  })
+
+  static byBirthDate = scope((query, birthDate: DateTime | null) => {
+    if (birthDate && birthDate.isValid) {
+      const isoDate = birthDate.toISODate()
+      if (isoDate) query.whereRaw(`DATE(birth_date) = DATE(?)`, [isoDate])
+    }
   })
 }
