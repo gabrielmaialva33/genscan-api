@@ -1,11 +1,11 @@
 openapi: 3.1.0
 info:
-  title: Base ACL API
+  title: Genscan API
   version: 1.0.0
   description: |
-    ## Welcome to Base ACL API
+    ## Welcome to the Genscan API
 
-    A robust authentication and access control API built with AdonisJS v6. This API provides comprehensive user management, role-based access control, and file management capabilities.
+    A modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data.
 
     ### Key Features
 
@@ -359,10 +359,10 @@ paths:
                 properties:
                   name:
                     type: string
-                    example: 'base-acl-api'
+                    example: 'genscan-api'
                   description:
                     type: string
-                    example: 'Base ACL API built with AdonisJS'
+                    example: 'API for genealogical scanning and analysis'
                   version:
                     type: string
                     example: '0.0.0'
