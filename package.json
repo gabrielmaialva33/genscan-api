@@ -1,6 +1,6 @@
 {
-  "name": "base-acl-api",
-  "description": "This is a base API project with ACL (Access Control List) using AdonisJS.",
+  "name": "genscan-api",
+  "description": "API for genealogical scanning and analysis, featuring advanced Access Control List (ACL).",
   "version": "0.0.1",
   "author": {
     "name": "Gabriel M.",
@@ -19,6 +19,7 @@
     "dev": "node ace serve --hmr",
     "test": "node ace test unit",
     "test:e2e": "node ace test",
+    "db:reset": "node ace migration:fresh --seed",
     "lint": "eslint .",
     "lint:fix": "eslint \"{app,providers,config,tests,start}/**/*.ts\" --fix --ignore-pattern pnpm-lock.yaml",
     "format": "prettier --write .",
