@@ -72,9 +72,6 @@ export default class ExternalApiService {
     this.parentToken = env.get('DATA_API_PARENT_TOKEN', '')
   }
 
-  /**
-   * Busca dados de uma pessoa pelo CPF
-   */
   async getPersonByCpf(cpf: string): Promise<ExternalApiPerson | null> {
     try {
       const cleanCpf = cpf.replace(/\D/g, '')
@@ -93,9 +90,6 @@ export default class ExternalApiService {
     }
   }
 
-  /**
-   * Busca filhos pelo nome do pai
-   */
   async getChildrenByFather(fatherName: string): Promise<ExternalApiChild[]> {
     try {
       const response = await axios.get<ExternalApiChild[]>(`${this.baseUrl}`, {
@@ -113,9 +107,6 @@ export default class ExternalApiService {
     }
   }
 
-  /**
-   * Busca filhos pelo nome da mãe
-   */
   async getChildrenByMother(motherName: string): Promise<ExternalApiChild[]> {
     try {
       const response = await axios.get<ExternalApiChild[]>(`${this.baseUrl}`, {
@@ -133,9 +124,6 @@ export default class ExternalApiService {
     }
   }
 
-  /**
-   * Busca dados completos de uma família incluindo pais e parentes
-   */
   async getFamilyData(cpf: string): Promise<{
     person: ExternalApiPerson | null
     relatives: Map<string, ExternalApiPerson>

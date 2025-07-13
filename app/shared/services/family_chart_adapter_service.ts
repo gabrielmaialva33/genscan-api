@@ -1,6 +1,8 @@
 import crypto from 'node:crypto'
 import { DateTime } from 'luxon'
+
 import ExternalApiService from '#shared/services/external_api_service'
+
 import Person from '#modules/person/models/person'
 import Relationship from '#modules/person/models/relationship'
 
@@ -32,9 +34,6 @@ export default class FamilyChartAdapterService {
     this.externalApiService = new ExternalApiService()
   }
 
-  /**
-   * Gera um ID único baseado no CPF
-   */
   private generateId(cpf: string): string {
     if (this.cpfToIdMap.has(cpf)) {
       return this.cpfToIdMap.get(cpf)!
@@ -44,9 +43,6 @@ export default class FamilyChartAdapterService {
     return id
   }
 
-  /**
-   * Converte data do formato DD/MM/YYYY para YYYY-MM-DD
-   */
   private convertDate(dateStr: string): string | null {
     if (!dateStr || dateStr === 'SEM INFORMAÇÃO') return null
 
@@ -58,9 +54,6 @@ export default class FamilyChartAdapterService {
     }
   }
 
-  /**
-   * Extrai primeiro e último nome
-   */
   private extractNames(fullName: string): { firstName: string; lastName: string } {
     const parts = fullName.split(' ').filter((p) => p)
     const firstName = parts[0] || ''
@@ -68,25 +61,17 @@ export default class FamilyChartAdapterService {
     return { firstName, lastName }
   }
 
-  /**
-   * Converte gênero para formato padrão
-   */
   private convertGender(gender: string): string {
     return gender === 'F' ? 'F' : 'M'
   }
 
-  /**
-   * Converte dados da API externa para formato FamilyChart
-   */
   async convertToFamilyChart(cpf: string): Promise<FamilyChartPerson[]> {
     const result: FamilyChartPerson[] = []
     const processedCpfs = new Set<string>()
 
-    // Busca dados da família
     const { person, relatives } = await this.externalApiService.getFamilyData(cpf)
     if (!person) return []
 
-    // Processa pessoa principal
     const mainPersonId = this.generateId(person.CPF)
     const { firstName, lastName } = this.extractNames(person.NOME)
 
@@ -109,7 +94,6 @@ export default class FamilyChartAdapterService {
       main: true,
     }
 
-    // Adiciona relacionamentos da pessoa principal
     if (person.PARENTES) {
       for (const parente of person.PARENTES) {
         const parenteId = this.generateId(parente.CPF_VINCULO)
@@ -122,11 +106,9 @@ export default class FamilyChartAdapterService {
             mainPerson.rels.father = parenteId
             break
           case 'IRMA(O)':
-            // Irmãos têm os mesmos pais
             break
           case 'AVO':
           case 'TIA(O)':
-            // Outros parentes não são diretamente mapeados no family-chart
             break
         }
       }
@@ -135,7 +117,6 @@ export default class FamilyChartAdapterService {
     result.push(mainPerson)
     processedCpfs.add(person.CPF)
 
-    // Processa parentes
     for (const [cpfVinculo, relative] of relatives) {
       if (processedCpfs.has(cpfVinculo)) continue
 
@@ -161,7 +142,6 @@ export default class FamilyChartAdapterService {
         main: false,
       }
 
-      // Adiciona filhos se for pai ou mãe
       if (relative.NOME === person.NOME_MAE || relative.NOME === person.NOME_PAI) {
         relativePerson.rels.children?.push(mainPersonId)
       }
@@ -170,7 +150,6 @@ export default class FamilyChartAdapterService {
       processedCpfs.add(cpfVinculo)
     }
 
-    // Busca filhos da pessoa principal
     const children = await this.externalApiService.getChildrenByMother(person.NOME)
     for (const child of children) {
       if (processedCpfs.has(child.CPF)) continue
@@ -205,13 +184,9 @@ export default class FamilyChartAdapterService {
     return result
   }
 
-  /**
-   * Busca dados do banco e converte para formato FamilyChart
-   */
   async getStoredFamilyChart(personId?: string): Promise<FamilyChartPerson[]> {
     const result: FamilyChartPerson[] = []
 
-    // Busca pessoas com relacionamentos
     const query = Person.query()
       .preload('relationships', (relQuery) => {
         relQuery.preload('relative')
@@ -271,12 +246,8 @@ export default class FamilyChartAdapterService {
     return result
   }
 
-  /**
-   * Salva dados do formato FamilyChart no banco
-   */
   async saveFamilyChartData(data: FamilyChartPerson[]): Promise<void> {
     for (const personData of data) {
-      // Cria ou atualiza pessoa
       const cpfHash = crypto.createHash('sha256').update(personData.id).digest('hex')
 
       const person = await Person.updateOrCreate(
@@ -299,7 +270,6 @@ export default class FamilyChartAdapterService {
         }
       )
 
-      // Salva relacionamentos
       if (personData.rels.father) {
         await Relationship.updateOrCreate(
           {
