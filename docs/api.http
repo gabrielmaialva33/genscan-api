@@ -430,3 +430,104 @@ Content-Type: image/jpeg
 #     }
 #   ]
 # }
+
+###############################################################################
+### FAMILY SEARCH ENDPOINTS
+###############################################################################
+
+### Search Family by CPF (Public)
+# Recursive search with cache support
+GET {{baseUrl}}/api/v1/persons/family/search?cpf=38579754828&maxDepth=2
+Accept: application/json
+
+### Search Family with Custom Options
+GET {{baseUrl}}/api/v1/persons/family/search?cpf=38579754828&maxDepth=3&includeSpouses=false&cacheExpiry=3600
+Accept: application/json
+
+### Search Multiple Families (Public)
+# Search up to 10 CPFs in parallel
+POST {{baseUrl}}/api/v1/persons/family/search-multiple
+Content-Type: application/json
+
+{
+  "cpfs": [
+    "38579754828",
+    "09361576828"
+  ],
+  "maxDepth": 2,
+  "includeSpouses": true
+}
+
+### Get Family Tree from Database (Public)
+# Get stored family data for a person
+GET {{baseUrl}}/api/v1/persons/family/{{personId}}/tree
+Accept: application/json
+
+### Import Family Data (Requires Authentication)
+# Fetch from external API and save to database
+POST {{baseUrl}}/api/v1/persons/family/import
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "cpf": "38579754828",
+  "maxDepth": 3,
+  "includeSpouses": true
+}
+
+### Clear Cache for Specific CPF (Requires Authentication)
+DELETE {{baseUrl}}/api/v1/persons/family/cache/38579754828
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Clear All Family Search Cache (Requires Authentication)
+DELETE {{baseUrl}}/api/v1/persons/family/cache
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Example Family Search Response
+# {
+#   "success": true,
+#   "data": [
+#     {
+#       "id": "550e8400-e29b-41d4-a716-446655440000",
+#       "data": {
+#         "first_name": "VITORIA",
+#         "last_name": "MAIA",
+#         "birthday": "1992-07-07",
+#         "gender": "F",
+#         "label": "VITORIA PEREZ MAIA",
+#         "desc": "CPF: 38579754828",
+#         "avatar": "https://static8.depositphotos.com/1009634/988/v/950/depositphotos_9883921-stock-illustration-no-user-profile-picture.jpg"
+#       },
+#       "rels": {
+#         "spouses": [],
+#         "mother": "550e8400-e29b-41d4-a716-446655440001",
+#         "children": []
+#       },
+#       "main": true
+#     },
+#     {
+#       "id": "550e8400-e29b-41d4-a716-446655440001",
+#       "data": {
+#         "first_name": "MARCIA",
+#         "last_name": "MAIA",
+#         "birthday": null,
+#         "gender": "F",
+#         "label": "MARCIA REGINA VALENTE PEREZ MAIA",
+#         "desc": "CPF: 09361576828",
+#         "avatar": "https://static8.depositphotos.com/1009634/988/v/950/depositphotos_9883921-stock-illustration-no-user-profile-picture.jpg"
+#       },
+#       "rels": {
+#         "spouses": [],
+#         "children": ["550e8400-e29b-41d4-a716-446655440000"]
+#       },
+#       "main": false
+#     }
+#   ],
+#   "meta": {
+#     "total": 2,
+#     "cpf": "38579754828",
+#     "maxDepth": 2
+#   }
+# }

@@ -64,7 +64,7 @@ servers:
     description: Production server
 
 security:
-  - bearerAuth: []
+  - bearerAuth: [ ]
 
 components:
   securitySchemes:
@@ -118,7 +118,7 @@ components:
           example: 'Regular user role'
         slug:
           type: string
-          enum: [root, admin, user, guest]
+          enum: [ root, admin, user, guest ]
           example: 'user'
         created_at:
           type: string
@@ -222,7 +222,7 @@ components:
           example: 'document.pdf'
         fileCategory:
           type: string
-          enum: [image, document, video, audio, file]
+          enum: [ image, document, video, audio, file ]
           example: 'document'
         fileType:
           type: string
@@ -275,7 +275,7 @@ components:
       in: query
       schema:
         type: string
-        enum: [asc, desc]
+        enum: [ asc, desc ]
         default: asc
       description: Sort order
 
@@ -339,6 +339,8 @@ tags:
     description: Current user profile operations
   - name: Permissions
     description: Permission management operations (admin only)
+  - name: Family Chart
+    description: Family chart format compatible endpoints for genealogical data visualization
 
 paths:
   /:
@@ -348,7 +350,7 @@ paths:
       description: Returns basic information about the API
       tags:
         - Health
-      security: []
+      security: [ ]
       responses:
         '200':
           description: API information
@@ -387,7 +389,7 @@ paths:
       description: Check the health status of the API and its services
       tags:
         - Health
-      security: []
+      security: [ ]
       responses:
         '200':
           description: Service is healthy
@@ -434,7 +436,7 @@ paths:
       description: Authenticate a user and receive JWT tokens
       tags:
         - Authentication
-      security: []
+      security: [ ]
       requestBody:
         required: true
         content:
@@ -542,7 +544,7 @@ paths:
       description: Create a new user account
       tags:
         - Authentication
-      security: []
+      security: [ ]
       requestBody:
         required: true
         content:
@@ -592,7 +594,7 @@ paths:
       description: Verify a user's email address using a token from the verification link.
       tags:
         - Authentication
-      security: []
+      security: [ ]
       parameters:
         - name: token
           in: query
@@ -822,7 +824,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                  example: [1, 2, 3]
+                  example: [ 1, 2, 3 ]
       responses:
         '200':
           description: Roles attached successfully
@@ -917,7 +919,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                  example: [1, 2, 3]
+                  example: [ 1, 2, 3 ]
       responses:
         '200':
           description: Permissions synced successfully
@@ -952,7 +954,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                  example: [4, 5]
+                  example: [ 4, 5 ]
       responses:
         '200':
           description: Permissions attached successfully
@@ -987,7 +989,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                  example: [1]
+                  example: [ 1 ]
       responses:
         '200':
           description: Permissions detached successfully
@@ -1022,7 +1024,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                  example: [10, 11]
+                  example: [ 10, 11 ]
       responses:
         '200':
           description: User permissions synced successfully
@@ -1072,7 +1074,7 @@ paths:
                   type: array
                   items:
                     type: string
-                  example: ['users.create', 'files.delete']
+                  example: [ 'users.create', 'files.delete' ]
       responses:
         '200':
           description: Check result
@@ -1135,3 +1137,468 @@ paths:
                   - message: 'File size should be less than 5MB'
                     field: 'file'
                     rule: 'size'
+
+  /api/v1/family-chart/example:
+    get:
+      operationId: getFamilyChartExample
+      summary: Get family chart format example
+      description: Returns an example of the family-chart data format
+      tags:
+        - Family Chart
+      security: [ ]
+      responses:
+        '200':
+          description: Example data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  format:
+                    type: string
+                    example: 'family-chart'
+                  description:
+                    type: string
+                  example:
+                    type: array
+                    items:
+                      type: object
+
+  /api/v1/family-chart/search-cpf/{cpf}:
+    get:
+      operationId: searchFamilyByCpf
+      summary: Search family data by CPF
+      description: Fetches genealogical data from external API and returns in family-chart format
+      tags:
+        - Family Chart
+      parameters:
+        - name: cpf
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^\d{11}$'
+          description: Brazilian CPF (11 digits)
+      responses:
+        '200':
+          description: Family data in family-chart format
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    data:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        birthday:
+                          type: string
+                          format: date
+                        avatar:
+                          type: string
+                        gender:
+                          type: string
+                          enum: [ M, F ]
+                        label:
+                          type: string
+                        desc:
+                          type: string
+                    rels:
+                      type: object
+                      properties:
+                        spouses:
+                          type: array
+                          items:
+                            type: string
+                        father:
+                          type: string
+                        mother:
+                          type: string
+                        children:
+                          type: array
+                          items:
+                            type: string
+                    main:
+                      type: boolean
+        '400':
+          description: Invalid CPF
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Person not found
+
+  /api/v1/family-chart/stored/{personId}:
+    get:
+      operationId: getStoredFamilyChart
+      summary: Get stored family data
+      description: Returns stored genealogical data in family-chart format
+      tags:
+        - Family Chart
+      parameters:
+        - name: personId
+          in: path
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Person ID (optional)
+      responses:
+        '200':
+          description: Family data retrieved successfully
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Data not found
+
+  /api/v1/family-chart/import:
+    post:
+      operationId: importFamilyChart
+      summary: Import family chart data
+      description: Imports genealogical data in family-chart format
+      tags:
+        - Family Chart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '201':
+          description: Data imported successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  count:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/family-chart/fetch-and-save:
+    post:
+      operationId: fetchAndSaveFamilyData
+      summary: Fetch and save family data
+      description: Fetches data from external API and saves to database
+      tags:
+        - Family Chart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cpf
+              properties:
+                cpf:
+                  type: string
+                  pattern: '^\d{11}$'
+                  example: '38579754828'
+      responses:
+        '201':
+          description: Data fetched and saved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  count:
+                    type: integer
+                  data:
+                    type: array
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Person not found in external API
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/persons/family/search:
+    get:
+      operationId: searchFamily
+      summary: Search family by CPF
+      description: Search family data recursively with caching support
+      tags:
+        - Family Chart
+      parameters:
+        - name: cpf
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 11
+            maxLength: 14
+          description: CPF to search (11-14 characters)
+        - name: maxDepth
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            default: 3
+          description: Maximum search depth
+        - name: includeSpouses
+          in: query
+          schema:
+            type: boolean
+            default: true
+          description: Include spouses in search
+        - name: cacheExpiry
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+          description: Cache expiry in seconds (0 to disable cache)
+      responses:
+        '200':
+          description: Family search successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      cpf:
+                        type: string
+                      maxDepth:
+                        type: integer
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          description: Internal server error
+
+  /api/v1/persons/family/search-multiple:
+    post:
+      operationId: searchMultipleFamilies
+      summary: Search multiple families
+      description: Search family data for multiple CPFs in parallel
+      tags:
+        - Family Chart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cpfs
+              properties:
+                cpfs:
+                  type: array
+                  items:
+                    type: string
+                    minLength: 11
+                    maxLength: 14
+                  minItems: 1
+                  maxItems: 10
+                  description: List of CPFs to search
+                maxDepth:
+                  type: integer
+                  minimum: 1
+                  maximum: 5
+                  default: 3
+                includeSpouses:
+                  type: boolean
+                  default: true
+      responses:
+        '200':
+          description: Multiple family search successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: array
+                  meta:
+                    type: object
+                    properties:
+                      totalCpfs:
+                        type: integer
+                      successfulSearches:
+                        type: integer
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/persons/family/{id}/tree:
+    get:
+      operationId: getFamilyTree
+      summary: Get family tree
+      description: Get family tree from database for a specific person
+      tags:
+        - Family Chart
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Person ID
+      responses:
+        '200':
+          description: Family tree retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      personId:
+                        type: string
+        '404':
+          description: Person not found or no family data available
+
+  /api/v1/persons/family/import:
+    post:
+      operationId: importFamily
+      summary: Import family data
+      description: Import family data from external API to database
+      tags:
+        - Family Chart
+      security:
+        - bearerAuth: [ ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cpf
+              properties:
+                cpf:
+                  type: string
+                  minLength: 11
+                  maxLength: 14
+                maxDepth:
+                  type: integer
+                  minimum: 1
+                  maximum: 5
+                  default: 3
+                includeSpouses:
+                  type: boolean
+                  default: true
+      responses:
+        '201':
+          description: Family data imported successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      imported:
+                        type: integer
+                      mainPerson:
+                        type: object
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: No family data found
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/persons/family/cache/{cpf}:
+    delete:
+      operationId: clearFamilyCache
+      summary: Clear cache for CPF
+      description: Clear family search cache for specific CPF
+      tags:
+        - Family Chart
+      security:
+        - bearerAuth: [ ]
+      parameters:
+        - name: cpf
+          in: path
+          required: true
+          schema:
+            type: string
+          description: CPF to clear cache
+      responses:
+        '200':
+          description: Cache cleared successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /api/v1/persons/family/cache:
+    delete:
+      operationId: clearAllFamilyCache
+      summary: Clear all family cache
+      description: Clear all family search cache
+      tags:
+        - Family Chart
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: All cache cleared successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
