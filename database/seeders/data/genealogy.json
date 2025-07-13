@@ -12,8 +12,20 @@
     "rels": {
       "father": "Q717406",
       "mother": "Q241535",
-      "spouses": ["Q254673", "Q233999", "Q105756153", "99948b56-f9bc-450b-8906-fce57c9446fb"],
-      "children": ["Q163816", "Q459216", "Q228584", "Q108722703", "Q105756206", "Q3302174"]
+      "spouses": [
+        "Q254673",
+        "Q233999",
+        "Q105756153",
+        "99948b56-f9bc-450b-8906-fce57c9446fb"
+      ],
+      "children": [
+        "Q163816",
+        "Q459216",
+        "Q228584",
+        "Q108722703",
+        "Q105756206",
+        "Q3302174"
+      ]
     },
     "main": true
   },
@@ -82,8 +94,12 @@
     },
     "rels": {
       "father": "Q855",
-      "spouses": ["e77cb3a5-5b80-476c-a6b4-816c8ada6f62"],
-      "children": ["Q56230675"],
+      "spouses": [
+        "e77cb3a5-5b80-476c-a6b4-816c8ada6f62"
+      ],
+      "children": [
+        "Q56230675"
+      ],
       "mother": "99948b56-f9bc-450b-8906-fce57c9446fb"
     },
     "main": false
@@ -101,8 +117,12 @@
     "rels": {
       "father": "Q28038544",
       "mother": "Q28038546",
-      "spouses": ["Q855"],
-      "children": ["Q163816"]
+      "spouses": [
+        "Q855"
+      ],
+      "children": [
+        "Q163816"
+      ]
     },
     "main": false
   },
@@ -119,8 +139,14 @@
     "rels": {
       "father": "Q56219116",
       "mother": "Q56231163",
-      "spouses": ["Q717406"],
-      "children": ["Q108723194", "Q108723531", "Q855"]
+      "spouses": [
+        "Q717406"
+      ],
+      "children": [
+        "Q108723194",
+        "Q108723531",
+        "Q855"
+      ]
     },
     "main": false
   },
@@ -137,8 +163,12 @@
     "rels": {
       "father": "Q855",
       "mother": "Q233999",
-      "spouses": ["fa9f54ad-2828-4e63-9f39-702a4d86ede8"],
-      "children": ["Q4099484"]
+      "spouses": [
+        "fa9f54ad-2828-4e63-9f39-702a4d86ede8"
+      ],
+      "children": [
+        "Q4099484"
+      ]
     },
     "main": false
   },
@@ -155,8 +185,16 @@
     "rels": {
       "father": "Q56218448",
       "mother": "Q107291873",
-      "spouses": ["Q241535", "f67b7b1a-0153-4fe3-a1da-36826012f3be"],
-      "children": ["Q108723194", "Q108723531", "Q855", "Q22344319"]
+      "spouses": [
+        "Q241535",
+        "f67b7b1a-0153-4fe3-a1da-36826012f3be"
+      ],
+      "children": [
+        "Q108723194",
+        "Q108723531",
+        "Q855",
+        "Q22344319"
+      ]
     },
     "main": false
   },
@@ -173,8 +211,16 @@
     "rels": {
       "father": "Q855",
       "mother": "Q254673",
-      "spouses": ["Q108724670", "Q56230882", "3a8980f1-0706-4427-b281-624749ed5116"],
-      "children": ["Q108724582", "Q1984422", "Q4160519"]
+      "spouses": [
+        "Q108724670",
+        "Q56230882",
+        "3a8980f1-0706-4427-b281-624749ed5116"
+      ],
+      "children": [
+        "Q108724582",
+        "Q1984422",
+        "Q4160519"
+      ]
     },
     "main": false
   },
@@ -190,8 +236,13 @@
     },
     "rels": {
       "father": "Q4062652",
-      "spouses": ["Q855"],
-      "children": ["Q228584", "Q459216"],
+      "spouses": [
+        "Q855"
+      ],
+      "children": [
+        "Q228584",
+        "Q459216"
+      ],
       "mother": "ae832b4d-5cfd-46b6-8245-182814ae20ae"
     },
     "main": false
@@ -207,8 +258,13 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q855"],
-      "children": ["Q108722703", "Q105756206"]
+      "spouses": [
+        "Q855"
+      ],
+      "children": [
+        "Q108722703",
+        "Q105756206"
+      ]
     },
     "main": false
   },
@@ -224,7 +280,10 @@
     },
     "rels": {
       "spouses": [],
-      "children": ["Q108722703", "Q105756206"]
+      "children": [
+        "Q108722703",
+        "Q105756206"
+      ]
     },
     "main": false
   },
@@ -241,8 +300,17 @@
     "rels": {
       "father": "Q855",
       "mother": "Q233999",
-      "spouses": ["Q4302955", "Q4178491", "Q6616173", "Q4409943"],
-      "children": ["Q57469252", "Q98102305", "Q4062650"]
+      "spouses": [
+        "Q4302955",
+        "Q4178491",
+        "Q6616173",
+        "Q4409943"
+      ],
+      "children": [
+        "Q57469252",
+        "Q98102305",
+        "Q4062650"
+      ]
     },
     "main": false
   },
@@ -275,8 +343,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q28038546"],
-      "children": ["Q254673"]
+      "spouses": [
+        "Q28038546"
+      ],
+      "children": [
+        "Q254673"
+      ]
     },
     "main": false
   },
@@ -291,8 +363,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q28038544"],
-      "children": ["Q254673"]
+      "spouses": [
+        "Q28038544"
+      ],
+      "children": [
+        "Q254673"
+      ]
     },
     "main": false
   },
@@ -343,8 +419,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q107291873"],
-      "children": ["Q717406"]
+      "spouses": [
+        "Q107291873"
+      ],
+      "children": [
+        "Q717406"
+      ]
     },
     "main": false
   },
@@ -359,8 +439,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q56231163"],
-      "children": ["Q241535"]
+      "spouses": [
+        "Q56231163"
+      ],
+      "children": [
+        "Q241535"
+      ]
     },
     "main": false
   },
@@ -375,8 +459,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q56219116"],
-      "children": ["Q241535"]
+      "spouses": [
+        "Q56219116"
+      ],
+      "children": [
+        "Q241535"
+      ]
     },
     "main": false
   },
@@ -391,8 +479,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["6f22957e-6176-42fd-97de-e152f1ee3342"],
-      "children": ["Q4416801"]
+      "spouses": [
+        "6f22957e-6176-42fd-97de-e152f1ee3342"
+      ],
+      "children": [
+        "Q4416801"
+      ]
     },
     "main": false
   },
@@ -407,8 +499,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q56218448"],
-      "children": ["Q717406"]
+      "spouses": [
+        "Q56218448"
+      ],
+      "children": [
+        "Q717406"
+      ]
     },
     "main": false
   },
@@ -441,8 +537,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q163816"],
-      "children": ["Q108724582"]
+      "spouses": [
+        "Q163816"
+      ],
+      "children": [
+        "Q108724582"
+      ]
     },
     "main": false
   },
@@ -493,8 +593,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q163816"],
-      "children": ["Q1984422"]
+      "spouses": [
+        "Q163816"
+      ],
+      "children": [
+        "Q1984422"
+      ]
     },
     "main": false
   },
@@ -581,8 +685,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["ae832b4d-5cfd-46b6-8245-182814ae20ae"],
-      "children": ["Q233999"]
+      "spouses": [
+        "ae832b4d-5cfd-46b6-8245-182814ae20ae"
+      ],
+      "children": [
+        "Q233999"
+      ]
     },
     "main": false
   },
@@ -635,8 +743,15 @@
     "rels": {
       "father": "Q855",
       "mother": "Q254673",
-      "spouses": ["Q108724670", "Q56230882"],
-      "children": ["Q4160519", "Q108724582", "Q1984422"]
+      "spouses": [
+        "Q108724670",
+        "Q56230882"
+      ],
+      "children": [
+        "Q4160519",
+        "Q108724582",
+        "Q1984422"
+      ]
     },
     "main": false
   },
@@ -651,7 +766,9 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q228584"],
+      "spouses": [
+        "Q228584"
+      ],
       "children": []
     },
     "main": false
@@ -685,8 +802,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q228584"],
-      "children": ["Q57469252"]
+      "spouses": [
+        "Q228584"
+      ],
+      "children": [
+        "Q57469252"
+      ]
     },
     "main": false
   },
@@ -703,8 +824,17 @@
     "rels": {
       "father": "Q855",
       "mother": "Q233999",
-      "spouses": ["Q4302955", "Q4178491", "Q6616173", "Q4409943"],
-      "children": ["Q57469252", "Q98102305", "Q4062650"]
+      "spouses": [
+        "Q4302955",
+        "Q4178491",
+        "Q6616173",
+        "Q4409943"
+      ],
+      "children": [
+        "Q57469252",
+        "Q98102305",
+        "Q4062650"
+      ]
     },
     "main": false
   },
@@ -721,8 +851,15 @@
     "rels": {
       "father": "Q56218448",
       "mother": "Q107291873",
-      "spouses": ["Q241535"],
-      "children": ["Q22344319", "Q108723194", "Q108723531", "Q855"]
+      "spouses": [
+        "Q241535"
+      ],
+      "children": [
+        "Q22344319",
+        "Q108723194",
+        "Q108723531",
+        "Q855"
+      ]
     },
     "main": false
   },
@@ -738,8 +875,13 @@
     },
     "rels": {
       "father": "Q4062652",
-      "spouses": ["Q855"],
-      "children": ["Q228584", "Q459216"]
+      "spouses": [
+        "Q855"
+      ],
+      "children": [
+        "Q228584",
+        "Q459216"
+      ]
     },
     "main": false
   },
@@ -754,8 +896,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q228584"],
-      "children": ["Q4062650"]
+      "spouses": [
+        "Q228584"
+      ],
+      "children": [
+        "Q4062650"
+      ]
     },
     "main": false
   },
@@ -770,8 +916,12 @@
       "gender": "M"
     },
     "rels": {
-      "spouses": ["Q228584"],
-      "children": ["Q98102305"]
+      "spouses": [
+        "Q228584"
+      ],
+      "children": [
+        "Q98102305"
+      ]
     },
     "main": false
   },
@@ -781,8 +931,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q855"],
-      "children": ["Q3302174"]
+      "spouses": [
+        "Q855"
+      ],
+      "children": [
+        "Q3302174"
+      ]
     },
     "to_add": true,
     "main": false
@@ -793,8 +947,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q3302174"],
-      "children": ["Q56230675"]
+      "spouses": [
+        "Q3302174"
+      ],
+      "children": [
+        "Q56230675"
+      ]
     },
     "to_add": true,
     "main": false
@@ -805,8 +963,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q459216"],
-      "children": ["Q4099484"]
+      "spouses": [
+        "Q459216"
+      ],
+      "children": [
+        "Q4099484"
+      ]
     },
     "to_add": true,
     "main": false
@@ -817,8 +979,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q717406"],
-      "children": ["Q22344319"]
+      "spouses": [
+        "Q717406"
+      ],
+      "children": [
+        "Q22344319"
+      ]
     },
     "to_add": true,
     "main": false
@@ -829,8 +995,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q163816"],
-      "children": ["Q4160519"]
+      "spouses": [
+        "Q163816"
+      ],
+      "children": [
+        "Q4160519"
+      ]
     },
     "to_add": true,
     "main": false
@@ -841,8 +1011,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q1332918"],
-      "children": ["Q4416801"]
+      "spouses": [
+        "Q1332918"
+      ],
+      "children": [
+        "Q4416801"
+      ]
     },
     "to_add": true,
     "main": false
@@ -853,8 +1027,12 @@
       "gender": "F"
     },
     "rels": {
-      "spouses": ["Q4062652"],
-      "children": ["Q233999"]
+      "spouses": [
+        "Q4062652"
+      ],
+      "children": [
+        "Q233999"
+      ]
     },
     "to_add": true,
     "main": false

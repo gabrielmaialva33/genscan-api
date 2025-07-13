@@ -2,7 +2,6 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import { PersonFactory } from '#database/factories/person_factory'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import Person from '#modules/person/models/person'
 import Relationship from '#modules/person/models/relationship'
 import crypto from 'node:crypto'
 
