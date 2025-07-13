@@ -34,7 +34,10 @@
 
 ## :bookmark: About
 
-**genscan** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data, enabling the construction and visualization of complex family trees. The API follows clean architecture principles with a clear separation of concerns, ensuring scalability and maintainability.
+**genscan** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust
+foundation for authentication, role-based access control, and management of genealogical data, enabling the construction
+and visualization of complex family trees. The API follows clean architecture principles with a clear separation of
+concerns, ensuring scalability and maintainability.
 
 ### 🏗️ Architecture Overview
 
@@ -217,7 +220,11 @@ graph TD
 - **👨‍👩‍👧‍👦 Individual Management**: Create and manage detailed personal profiles, including demographic information.
 - **🔗 Relationship Mapping**: Define complex family ties (parents, children, spouses, etc.) to build family trees.
 - **📞 Contact and Address Storage**: Centralize contact information and multiple addresses per individual.
-- **🧩 Flexible Data Structure**: Support for external data and additional information through JSON fields, allowing for easy integration with other sources.
+- **🧩 Flexible Data Structure**: Support for external data and additional information through JSON fields, allowing for
+  easy integration with other sources.
+- **🌐 External API Integration**: Fetch genealogical data from external sources using CPF (Brazilian ID).
+- **📊 Family Chart Format**: Compatible with the [family-chart](https://github.com/donatso/family-chart) library for
+  visual family tree rendering.
 
 ### Database Schema
 
@@ -454,35 +461,77 @@ graph LR
     style ROLE_ATTACH fill:#FFB6C1
 ```
 
+### 🌳 Family Chart Integration
+
+GenScan now includes full integration with the family-chart library for genealogical visualization:
+
+#### Family Chart Endpoints
+
+| Method   | Endpoint                                 | Description                      | Auth Required |
+|----------|------------------------------------------|----------------------------------|---------------|
+| **GET**  | `/api/v1/family-chart/example`           | Get format example               | ❌             |
+| **GET**  | `/api/v1/family-chart/search-cpf/:cpf`   | Search family by CPF             | ✅             |
+| **GET**  | `/api/v1/family-chart/stored/:personId?` | Get stored family data           | ✅             |
+| **POST** | `/api/v1/family-chart/import`            | Import family data               | ✅             |
+| **POST** | `/api/v1/family-chart/fetch-and-save`    | Fetch and save from external API | ✅             |
+
+#### Visualization Example
+
+```html
+<!-- Include family-chart library -->
+<script src="https://unpkg.com/family-chart/dist/family-chart.js"></script>
+
+<!-- Render family tree -->
+<div id="tree"></div>
+<script>
+  fetch('/api/v1/family-chart/search-cpf/12345678900', {
+    headers: {Authorization: 'Bearer YOUR_TOKEN'},
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      new FamilyChart('#tree', {
+        data: data,
+        nodeBinding: {
+          field_0: 'label',
+          field_1: 'birthday',
+          img_0: 'avatar',
+        },
+      })
+    })
+</script>
+```
+
+See [docs/FAMILY_CHART_API.md](docs/FAMILY_CHART_API.md) for complete documentation.
+
 ### 📋 Route Details
 
 | Method     | Endpoint                                    | Description                   | Auth Required | Permission/Role    |
-| ---------- | ------------------------------------------- | ----------------------------- | ------------- | ------------------ |
-| **GET**    | `/`                                         | API information               | ❌            | -                  |
-| **GET**    | `/api/v1/health`                            | Health check                  | ❌            | -                  |
-| **POST**   | `/api/v1/sessions/sign-in`                  | User login                    | ❌            | -                  |
-| **POST**   | `/api/v1/sessions/sign-up`                  | User registration             | ❌            | -                  |
-| **GET**    | `/api/v1/verify-email`                      | Verify user email             | ❌            | -                  |
-| **POST**   | `/api/v1/resend-verification-email`         | Resend verification email     | ✅            | -                  |
-| **GET**    | `/api/v1/me`                                | Get current user profile      | ✅            | -                  |
-| **GET**    | `/api/v1/me/permissions`                    | Get current user permissions  | ✅            | -                  |
-| **GET**    | `/api/v1/me/roles`                          | Get current user roles        | ✅            | -                  |
-| **GET**    | `/api/v1/users`                             | List users (paginated)        | ✅            | users.list         |
-| **GET**    | `/api/v1/users/:id`                         | Get user by ID                | ✅            | users.read         |
-| **POST**   | `/api/v1/users`                             | Create user                   | ✅            | users.create       |
-| **PUT**    | `/api/v1/users/:id`                         | Update user                   | ✅            | users.update       |
-| **DELETE** | `/api/v1/users/:id`                         | Delete user                   | ✅            | users.delete       |
-| **GET**    | `/api/v1/admin/roles`                       | List roles                    | ✅            | ROOT, ADMIN        |
-| **PUT**    | `/api/v1/admin/roles/attach`                | Attach role to user           | ✅            | ROOT, ADMIN        |
-| **GET**    | `/api/v1/admin/permissions`                 | List permissions              | ✅            | permissions.list   |
-| **POST**   | `/api/v1/admin/permissions`                 | Create permission             | ✅            | permissions.create |
-| **PUT**    | `/api/v1/admin/roles/permissions/sync`      | Sync role permissions         | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/roles/permissions/attach`    | Attach permissions to role    | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/roles/permissions/detach`    | Detach permissions from role  | ✅            | permissions.update |
-| **PUT**    | `/api/v1/admin/users/permissions/sync`      | Sync user permissions         | ✅            | permissions.update |
-| **GET**    | `/api/v1/admin/users/:id/permissions`       | Get user's direct permissions | ✅            | permissions.list   |
-| **POST**   | `/api/v1/admin/users/:id/permissions/check` | Check user permissions        | ✅            | permissions.list   |
-| **POST**   | `/api/v1/files/upload`                      | Upload file                   | ✅            | files.create       |
+|------------|---------------------------------------------|-------------------------------|---------------|--------------------|
+| **GET**    | `/`                                         | API information               | ❌             | -                  |
+| **GET**    | `/api/v1/health`                            | Health check                  | ❌             | -                  |
+| **POST**   | `/api/v1/sessions/sign-in`                  | User login                    | ❌             | -                  |
+| **POST**   | `/api/v1/sessions/sign-up`                  | User registration             | ❌             | -                  |
+| **GET**    | `/api/v1/verify-email`                      | Verify user email             | ❌             | -                  |
+| **POST**   | `/api/v1/resend-verification-email`         | Resend verification email     | ✅             | -                  |
+| **GET**    | `/api/v1/me`                                | Get current user profile      | ✅             | -                  |
+| **GET**    | `/api/v1/me/permissions`                    | Get current user permissions  | ✅             | -                  |
+| **GET**    | `/api/v1/me/roles`                          | Get current user roles        | ✅             | -                  |
+| **GET**    | `/api/v1/users`                             | List users (paginated)        | ✅             | users.list         |
+| **GET**    | `/api/v1/users/:id`                         | Get user by ID                | ✅             | users.read         |
+| **POST**   | `/api/v1/users`                             | Create user                   | ✅             | users.create       |
+| **PUT**    | `/api/v1/users/:id`                         | Update user                   | ✅             | users.update       |
+| **DELETE** | `/api/v1/users/:id`                         | Delete user                   | ✅             | users.delete       |
+| **GET**    | `/api/v1/admin/roles`                       | List roles                    | ✅             | ROOT, ADMIN        |
+| **PUT**    | `/api/v1/admin/roles/attach`                | Attach role to user           | ✅             | ROOT, ADMIN        |
+| **GET**    | `/api/v1/admin/permissions`                 | List permissions              | ✅             | permissions.list   |
+| **POST**   | `/api/v1/admin/permissions`                 | Create permission             | ✅             | permissions.create |
+| **PUT**    | `/api/v1/admin/roles/permissions/sync`      | Sync role permissions         | ✅             | permissions.update |
+| **PUT**    | `/api/v1/admin/roles/permissions/attach`    | Attach permissions to role    | ✅             | permissions.update |
+| **PUT**    | `/api/v1/admin/roles/permissions/detach`    | Detach permissions from role  | ✅             | permissions.update |
+| **PUT**    | `/api/v1/admin/users/permissions/sync`      | Sync user permissions         | ✅             | permissions.update |
+| **GET**    | `/api/v1/admin/users/:id/permissions`       | Get user's direct permissions | ✅             | permissions.list   |
+| **POST**   | `/api/v1/admin/users/:id/permissions/check` | Check user permissions        | ✅             | permissions.list   |
+| **POST**   | `/api/v1/files/upload`                      | Upload file                   | ✅             | files.create       |
 
 ### 🔄 Request/Response Flow
 
