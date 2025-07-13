@@ -1,15 +1,15 @@
 <h1 align="center">
-  <img src=".github/assets/images/img1.png" height="200" alt="genscan-api">
+  <img src=".github/assets/images/img1.png" height="200" alt="genscan">
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/gabrielmaialva33/genscan-api?color=00b8d3?style=flat&logo=appveyor" alt="License" />
-  <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub top language" >
-  <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub language count" >
-  <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="Repository size" >
+  <img src="https://img.shields.io/github/license/gabrielmaialva33/genscan?color=00b8d3?style=flat&logo=appveyor" alt="License" />
+  <img src="https://img.shields.io/github/languages/top/gabrielmaialva33/genscan?style=flat&logo=appveyor" alt="GitHub top language" >
+  <img src="https://img.shields.io/github/languages/count/gabrielmaialva33/genscan?style=flat&logo=appveyor" alt="GitHub language count" >
+  <img src="https://img.shields.io/github/repo-size/gabrielmaialva33/genscan?style=flat&logo=appveyor" alt="Repository size" >
   <img src="https://wakatime.com/badge/user/e61842d0-c588-4586-96a3-f0448a434be4/project/b0347a5f-cacf-486d-bd2d-b91d3e6cb570.svg?style=flat&logo=appveyor" alt="Wakatime" >
-  <a href="https://github.com/gabrielmaialva33/genscan-api/commits/master">
-    <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/genscan-api?style=flat&logo=appveyor" alt="GitHub last commit" >
+  <a href="https://github.com/gabrielmaialva33/genscan/commits/master">
+    <img src="https://img.shields.io/github/last-commit/gabrielmaialva33/genscan?style=flat&logo=appveyor" alt="GitHub last commit" >
     <img src="https://img.shields.io/badge/made%20by-Maia-15c3d6?style=flat&logo=appveyor" alt="Maia" >  
   </a>
 </p>
@@ -34,7 +34,7 @@
 
 ## :bookmark: About
 
-**genscan-api** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data, enabling the construction and visualization of complex family trees. The API follows clean architecture principles with a clear separation of concerns, ensuring scalability and maintainability.
+**genscan** is a modular API for genealogical scanning and analysis, built with AdonisJS v6. It provides a robust foundation for authentication, role-based access control, and management of genealogical data, enabling the construction and visualization of complex family trees. The API follows clean architecture principles with a clear separation of concerns, ensuring scalability and maintainability.
 
 ### 🏗️ Architecture Overview
 
@@ -389,7 +389,7 @@ The following software must be installed:
 ### :arrow_down: **Cloning the repository**
 
 ```sh
-  $ git clone https://github.com/gabrielmaialva33/genscan-api.git
+  $ git clone https://github.com/gabrielmaialva33/genscan.git
 ```
 
 <br>
@@ -399,7 +399,7 @@ The following software must be installed:
 - :package: API
 
 ```sh
-  $ cd genscan-api
+  $ cd genscan
   # Dependencies install.
   $ yarn # or npm install
   # Config environment system
@@ -564,7 +564,7 @@ ROOT
 ### 📥 Insomnia Collection
 
 Get the complete API collection for
-Insomnia: [Download](https://raw.githubusercontent.com/gabrielmaialva33/genscan-api/master/.github/assets/insomnia/Insomnia.json.zip)
+Insomnia: [Download](https://raw.githubusercontent.com/gabrielmaialva33/genscan/master/.github/assets/insomnia/Insomnia.json.zip)
 
 ## :memo: License
 

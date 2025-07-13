@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: genscan-api
+    container_name: genscan
     restart: always
     healthcheck:
       test: ['CMD', 'nc', '-z', 'localhost', '3333']

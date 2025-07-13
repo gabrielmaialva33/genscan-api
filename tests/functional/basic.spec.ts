@@ -6,7 +6,7 @@ test.group('Basic API', () => {
 
     response.assertStatus(200)
     response.assertBodyContains({
-      name: 'genscan-api',
+      name: 'genscan',
       version: '0.0.1',
     })
   })

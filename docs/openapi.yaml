@@ -359,7 +359,7 @@ paths:
                 properties:
                   name:
                     type: string
-                    example: 'genscan-api'
+                    example: 'genscan'
                   description:
                     type: string
                     example: 'API for genealogical scanning and analysis'
