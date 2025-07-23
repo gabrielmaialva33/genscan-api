@@ -69,7 +69,7 @@
     "ts-mockito": "^2.6.1",
     "ts-node-maintained": "^10.9.5",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.5"
   },
   "dependencies": {
     "@adonisjs/ally": "^5.1.0",
